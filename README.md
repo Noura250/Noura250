@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="banner.webp" width="50%" />
+</p>
+
 # 💫 About Me:
 👋 Bienvenue sur mon GitHub !<br>Je suis étudiante en informatique et j'utilise cet espace pour partager les projets que je réalise au cours de ma formation ainsi que mes projets personnels.<br>Vous y trouverez l'évolution de mes compétences, mes expérimentations et les technologies que j'apprends au quotidien.
 
