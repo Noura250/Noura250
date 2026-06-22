@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.webp" width="100%" alt="Banner">
+  <img src="assets/ban.webp" width="40%" alt="Banner">
 </p>
 
 # 💫 About Me:
