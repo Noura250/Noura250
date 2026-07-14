@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noura Guello Ibrahim · Portfolio · BTS SIO SISR</title>
+  <meta name="description" content="Portfolio de Noura Guello Ibrahim, étudiante BTS SIO option SISR à l'EPSI Montpellier — projets PHP, Python, SQL et administration systèmes & réseaux.">
+  <meta name="theme-color" content="#0d0b1e">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Noura Guello Ibrahim · Portfolio">
+  <meta property="og:description" content="Étudiante BTS SIO SISR — projets web, bases de données & cybersécurité.">
+  <meta property="og:image" content="img/img.jpeg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230d0b1e'/%3E%3Crect x='3' y='2' width='10' height='9' fill='%239b5de5'/%3E%3Crect x='5' y='4' width='2' height='2' fill='%230d0b1e'/%3E%3Crect x='9' y='4' width='2' height='2' fill='%230d0b1e'/%3E%3Crect x='5' y='12' width='2' height='2' fill='%23f72585'/%3E%3Crect x='9' y='12' width='2' height='2' fill='%234cc9f0'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ░░ BOOT / LOADING SCREEN ░░ -->
+<div id="bootScreen" class="boot-screen" role="status" aria-live="polite">
+  <div class="boot-content">
+    <div class="boot-badge">★ SYSTEM BOOT ★</div>
+    <div class="boot-logo glitch" data-text="NOURA.EXE">NOURA.EXE</div>
+    <div class="boot-bar-track">
+      <div class="boot-bar-fill" id="bootBarFill"></div>
+    </div>
+    <div class="boot-row">
+      <span class="boot-pct" id="bootPct">0%</span>
+      <span class="boot-tip" id="bootTip">Initialisation...</span>
+    </div>
+  </div>
+</div>
+
+<a href="#moi" class="skip-link">Aller au contenu principal</a>
+
+<!-- ░░ SCANLINES OVERLAY ░░ -->
+<div class="scanlines"></div>
+
+<!-- ░░ SCROLL PROGRESS (XP BAR) ░░ -->
+<div class="scroll-xp-track" aria-hidden="true"><div class="scroll-xp-fill" id="scrollXpFill"></div></div>
+
+<!-- ░░ PIXEL CITY BACKGROUND ░░ -->
+<div class="city-bg">
+  <canvas id="cityCanvas"></canvas>
+</div>
+
+<!-- ░░ GUIDE CHARACTER (NPC Noura) ░░ -->
+<div id="guide" class="guide-char">
+  <div class="guide-bubble" id="guideBubble">
+    <span id="guideText">Salut ! Je suis Noura, clique sur une section pour explorer mon univers !</span>
+    <div class="bubble-tail"></div>
+  </div>
+  <canvas id="characterCanvas" width="64" height="96"></canvas>
+</div>
+
+<!-- ░░ NAV BAR ░░ -->
+<nav class="pixel-nav">
+  <div class="nav-logo">
+    <span class="blink">▶</span> NOURA.EXE
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="#moi" class="nav-link" data-msg="Qui suis-je ? Découvre mon histoire !">[ MOI ]</a>
+    <a href="#parcours" class="nav-link" data-msg="Mon parcours académique niveau par niveau !">[ PARCOURS ]</a>
+    <a href="#projets" class="nav-link" data-msg="Mes créations... prêt(e) à explorer ?">[ PROJETS ]</a>
+    <a href="#stages" class="nav-link" data-msg="Mon expérience terrain en vrai monde !">[ STAGE ]</a>
+    <a href="#veilles" class="nav-link" data-msg="Je reste toujours à jour sur la tech !">[ VEILLES ]</a>
+    <a href="#contact" class="nav-link" data-msg="Envie de me contacter ? Je réponds vite !">[ CONTACT ]</a>
+  </div>
+</nav>
+
+<!-- ░░ HERO ░░ -->
+<section id="hero" class="hero-section">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>★ PLAYER 01 ★</span>
+    </div>
+    <div class="xp-bar-container">
+      <span class="xp-label">XP</span>
+      <div class="xp-bar"><div class="xp-fill" style="width:72%"></div></div>
+      <span class="xp-val">720/1000</span>
+    </div>
+    <h1 class="hero-title glitch" data-text="NOURA">NOURA</h1>
+    <h2 class="hero-subtitle">GUELLO IBRAHIM</h2>
+    <p class="hero-role">// Étudiante BTS SIO · Option SISR · Cybersécurité & Réseaux</p>
+    <div class="hero-btns">
+      <a href="#projets" class="pixel-btn btn-primary">▶ VOIR MES PROJETS</a>
+      <a href="docs/CV_INFORMATIQUE_noura.pdf" class="pixel-btn btn-secondary" target="_blank">MON CV</a>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">PHP</span><span class="tag">Python</span><span class="tag">SQL</span>
+      <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">WordPress</span>
+    </div>
+  </div>
+  <div class="hero-screen">
+    <div class="screen-frame">
+      <div class="screen-inner" id="screenInner">
+        <div class="screen-line">root@noura:~$ whoami</div>
+        <div class="screen-line delay-1">→ Étudiante BTS SIO, option SISR</div>
+        <div class="screen-line delay-2">root@noura:~$ cat skills.txt</div>
+        <div class="screen-line delay-3">→ PHP · Python · SQL · HTML/CSS · JS</div>
+        <div class="screen-line delay-4">root@noura:~$ echo $LOCATION</div>
+        <div class="screen-line delay-5">→ Montpellier, France</div>
+        <div class="screen-line delay-6">root@noura:~$ cat goal.txt</div>
+        <div class="screen-line delay-7">→ Cybersécurité, pentest & cloud</div>
+        <div class="screen-line delay-7 terminal-hint">→ Tape "help" ci-dessous et appuie sur Entrée ⌨️</div>
+      </div>
+      <form id="terminalForm" class="terminal-input-row" autocomplete="off">
+        <span class="terminal-prompt">guest@noura:~$</span>
+        <input type="text" id="terminalInput" class="terminal-input" aria-label="Terminal interactif — tape une commande" placeholder="help">
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SECTION MOI ░░ -->
+<section id="moi" class="pixel-section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">À PROPOS DE MOI</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-avatar-col">
+      <div class="avatar-frame">
+        <img src="img/img.jpeg" alt="Noura" class="avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <canvas id="avatarPixel" width="120" height="120" style="display:none"></canvas>
+        <div class="avatar-glow"></div>
+      </div>
+      <div class="status-card">
+        <div class="status-row"><span class="s-label">STATUS</span><span class="s-val online">● ONLINE</span></div>
+        <div class="status-row"><span class="s-label">VILLE</span><span class="s-val">Montpellier</span></div>
+        <div class="status-row"><span class="s-label">ÉCOLE</span><span class="s-val">EPSI</span></div>
+        <div class="status-row"><span class="s-label">DISPO</span><span class="s-val">Stage 2026</span></div>
+      </div>
+    </div>
+    <div class="about-text-col">
+      <div class="about-bio">
+       <p>Étudiante en première année de BTS SIO, option SISR, je me spécialise dans l'administration des systèmes et réseaux, la sécurité informatique et les infrastructures. J'apprécie apprendre de nouvelles technologies et développer des solutions fiables et sécurisées.</p>
+       <p>Mon objectif est de construire une carrière dans la cybersécurité, en particulier dans le pentest, ou dans les technologies cloud. Sérieuse, curieuse et déterminée, je souhaite acquérir une solide expérience professionnelle afin de développer mes compétences techniques et contribuer à des projets innovants.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <span class="skill-name">PHP</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Python</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">SQL</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">HTML/CSS</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">JavaScript</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">WordPress</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+        </div>
+      </div>
+      <div class="contact-pills">
+        <a href="tel:0762017280" class="pill">07 62 01 72 80</a>
+        <a href="mailto:Nouraguelloibrahim@gmail.com" class="pill">Nouraguelloibrahim@gmail.com</a>
+        <a href="docs/CV_INFORMATIQUE_noura.pdf" class="pill btn-cv" target="_blank">Mon CV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SECTION PARCOURS ░░ -->
+<section id="parcours" class="pixel-section dark-section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">MON PARCOURS</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline-world">
+    <div class="timeline-track">
+      <div class="timeline-node active">
+        <div class="node-year">2025→2029</div>
+        <div class="node-dot"></div>
+        <div class="node-card">
+          <div class="node-badge">CURRENT</div>
+          <h3>1ère année BTS SIO — Option SISR</h3>
+          <p class="node-school">EPSI Millénaire — Montpellier (34)</p>
+          <p>Spécialisation systèmes, infrastructures et réseaux, avec un socle commun en développement (PHP, SQL, Python).</p>
+        </div>
+      </div>
+      <div class="timeline-connector">
+        <div class="connector-line"></div>
+        <div class="connector-icons">►</div>
+      </div>
+      <div class="timeline-node">
+        <div class="node-year">2024—2025</div>
+        <div class="node-dot"></div>
+        <div class="node-card">
+          <h3>Bachelor Web-Multimédia</h3>
+          <p class="node-school">My Digital School — Montpellier (34)</p>
+          <p>Première année de Bachelor en web-multimédia.</p>
+        </div>
+      </div>
+    </div>
+    <div class="skills-world">
+      <h3 class="skills-world-title">// COMPÉTENCES DÉBLOQUÉES</h3>
+      <div class="skill-domains">
+        <div class="domain-card">
+          <h4>Développement Web</h4>
+          <p>HTML5, CSS, PHP et WordPress pour concevoir et développer des sites et applications web, de la conception à la mise en ligne.</p>
+          <div class="domain-tags">
+            <span>HTML5</span><span>CSS3</span><span>PHP</span><span>WordPress</span>
+          </div>
+        </div>
+        <div class="domain-card">
+          <h4>Programmation & Data</h4>
+          <p>Python, Bash, PowerShell et SQL pour le scripting, la gestion de bases de données et l'analyse de données.</p>
+          <div class="domain-tags">
+            <span>Python</span><span>SQL</span><span>Bash</span><span>PowerShell</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SECTION PROJETS ░░ -->
+<section id="projets" class="pixel-section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">MES PROJETS</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-tabs">
+    <button class="tab-btn active" onclick="switchTab('annee1')">Année 1</button>
+    <button class="tab-btn" onclick="switchTab('annee2')">Année 2</button>
+    <button class="tab-btn" onclick="switchTab('e4')">Épreuve E4</button>
+  </div>
+
+  <div id="annee1" class="tab-content active">
+    <div class="projects-grid">
+      <div class="project-card" onclick="openModal('bataille')">
+        <div class="card-screen">
+          <div class="card-pixel-art battle-art"></div>
+        </div>
+        <div class="card-info">
+          <div class="card-badge-lang">PHP</div>
+          <h3>Bataille Navale</h3>
+          <p class="card-desc">Jeu au tour par tour où chaque joueur cible la flotte adverse. Projet en binôme.</p>
+          <p class="card-date">Oct — Déc 2025</p>
+          <div class="card-tags"><span>PHP</span><span>Algo</span></div>
+        </div>
+        <div class="card-hover-overlay">VOIR ▶</div>
+      </div>
+
+      <div class="project-card" onclick="openModal('gite')">
+        <div class="card-screen">
+          <div class="card-pixel-art db-art"></div>
+        </div>
+        <div class="card-info">
+          <div class="card-badge-lang">SQL</div>
+          <h3>Projet Gîtes</h3>
+          <p class="card-desc">Conception d'une base de données pour gérer réservations et disponibilités. Projet de groupe.</p>
+          <p class="card-date">Nov — Déc 2025</p>
+          <div class="card-tags"><span>SQL Server</span><span>MCD/MLD</span></div>
+        </div>
+        <div class="card-hover-overlay">VOIR ▶</div>
+      </div>
+
+      <div class="project-card" onclick="openModal('bubbly')">
+        <div class="card-screen">
+          <div class="card-pixel-art chat-art"></div>
+        </div>
+        <div class="card-info">
+          <div class="card-badge-lang">PHP · SQL</div>
+          <h3>Bubbly</h3>
+          <p class="card-desc">Application de clavardage en ligne pour échanger des messages entre plusieurs utilisateurs.</p>
+          <p class="card-date">6 — 26 janv. 2026</p>
+          <div class="card-tags"><span>PHP</span><span>SQL</span><span>HTML/CSS</span></div>
+        </div>
+        <div class="card-hover-overlay">VOIR ▶</div>
+      </div>
+
+      <div class="project-card" onclick="openModal('hotel')">
+        <div class="card-screen">
+          <div class="card-pixel-art hotel-art"></div>
+        </div>
+        <div class="card-info">
+          <div class="card-badge-lang">PHP · CSS</div>
+          <h3>Hôtel Neptune</h3>
+          <p class="card-desc">Site web complet avec espace public et back-office privé pour les employés.</p>
+          <p class="card-date">22 janv. — 5 févr. 2026</p>
+          <div class="card-tags"><span>PHP</span><span>SQL</span><span>CSS</span></div>
+        </div>
+        <div class="card-hover-overlay">VOIR ▶</div>
+      </div>
+
+      <div class="project-card" onclick="openModal('python')">
+        <div class="card-screen">
+          <div class="card-pixel-art py-art"></div>
+        </div>
+        <div class="card-info">
+          <div class="card-badge-lang">Python</div>
+          <h3>Système de Réservation</h3>
+          <p class="card-desc">Gestion de ressources universitaires (livres, salles, matériel) en programmation objet.</p>
+          <p class="card-date">1 — 17 févr. 2026</p>
+          <div class="card-tags"><span>Python</span><span>POO</span></div>
+        </div>
+        <div class="card-hover-overlay">VOIR ▶</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="annee2" class="tab-content">
+    <div class="projects-grid">
+      <div class="project-card coming-soon">
+        <div class="card-screen">
+          <div class="card-pixel-art loading-art"></div>
+        </div>
+        <div class="card-info">
+          <h3>Projet</h3>
+          <p>En cours de construction…</p>
+        </div>
+      </div>
+      <div class="project-card coming-soon">
+        <div class="card-screen">
+          <div class="card-pixel-art loading-art"></div>
+        </div>
+        <div class="card-info">
+          <h3>Projet</h3>
+          <p>En cours de construction…</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="e4" class="tab-content">
+    <div class="e4-container">
+      <h3 class="e4-title">// Épreuve E4</h3>
+      <p class="e4-intro">L'E4 (Conception et maintenance de solutions informatiques) est une épreuve officielle du BTS SIO qui évalue la capacité à analyser un besoin et proposer une solution technique. Voici le sujet traité :</p>
+      <div class="pdf-wrapper">
+        <iframe src="docs/projet/epreuve-e4.pdf" width="100%" height="650px" title="Sujet de l'épreuve E4">
+          <p>Votre navigateur ne supporte pas l'affichage PDF. <a href="docs/projet/epreuve-e4.pdf" target="_blank">Consulter ici →</a></p>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SECTION STAGES ░░ -->
+
+<section id="stages" class="pixel-section dark-section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">MES STAGES</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="stage-world">
+
+    <!-- Stage 2026 -->
+    <div class="stage-card" onclick="openModal('stage2026')">
+      <div class="stage-content">
+        <div class="stage-year">2026</div>
+
+        <h3>Stage en développement WordPress</h3>
+
+        <p class="stage-company">EXOCOMS GROUP</p>
+
+        <ul class="stage-tasks">
+          <li>Création d'un site web complet sous WordPress</li>
+          <li>Conception de la charte graphique</li>
+          <li>Personnalisation du thème et des pages</li>
+        </ul>
+
+        <span class="stage-cta">Voir les détails ▶</span>
+      </div>
+    </div>
+
+    <!-- Stage 2025 -->
+    <div class="stage-card" onclick="openModal('stage2025')">
+      <div class="stage-content">
+        <div class="stage-year">2025</div>
+
+        <h3>Stage en événementiel</h3>
+
+        <p class="stage-company">Secteur événementiel</p>
+
+        <ul class="stage-tasks">
+          <li>Gestion d'une base de données de contacts</li>
+          <li>Animation des réseaux sociaux</li>
+          <li>Création et envoi de campagnes d'emailing</li>
+        </ul>
+
+        <span class="stage-cta">Voir les détails ▶</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░ SECTION VEILLES ░░ -->
+<section id="veilles" class="pixel-section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">VEILLES TECHNOLOGIQUES</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="section-intro">La veille technologique est une pratique régulière qui consiste à s'informer sur les dernières innovations du secteur. Elle permet d'anticiper les évolutions techniques, de découvrir de nouveaux outils et de maintenir ses compétences à jour.</p>
+  <div class="veilles-grid">
+    <div class="veille-card coming">
+      <div class="veille-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 13.5 4.5h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5h-.5a.5.5 0 0 1 0-1H2v-1H1.5a.5.5 0 0 1 0-1H2v-1H1.5a.5.5 0 0 1 0-1H2v-1H1.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V1.5A.5.5 0 0 1 5 0"/>
+        </svg>
+      </div>
+      <h4>Veille à venir</h4>
+      <span class="badge-coming">En cours de construction</span>
+      <p>Ma première veille technologique sera bientôt disponible ici.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SECTION CONTACT ░░ -->
+<section id="contact" class="pixel-section dark-section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="section-title">CONTACT</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-world">
+    <div class="contact-left">
+      <p class="contact-intro">Une question ? Une opportunité ? Envoyez-moi un message !</p>
+      <div class="contact-links">
+        <a href="mailto:Nouraguelloibrahim@gmail.com" class="contact-link">
+          <span>Nouraguelloibrahim@gmail.com</span>
+        </a>
+        <a href="tel:0762017280" class="contact-link">
+          <span>07 62 01 72 80</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="contact-link">
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com" target="_blank" class="contact-link">
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <form id="contact-form" class="pixel-form">
+        <label class="sr-only" for="f-name">Votre nom</label>
+        <input type="text" id="f-name" name="name" placeholder="Votre nom" required>
+        <label class="sr-only" for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" placeholder="Email" required>
+        <label class="sr-only" for="f-subject">Objet du message</label>
+        <input type="text" id="f-subject" name="subject" placeholder="Objet du message" required>
+        <label class="sr-only" for="f-message">Votre message</label>
+        <textarea id="f-message" name="message" placeholder="Votre message" rows="5" required></textarea>
+        <button type="submit" class="pixel-btn btn-primary">▶ ENVOYER</button>
+      </form>
+      <div id="form-toast" class="toast hidden">Message envoyé !</div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer class="pixel-footer">
+  <div class="footer-inner">
+    <span>© 2026 NOURA GUELLO IBRAHIM</span>
+    <span class="blink">█</span>
+    <span>BTS SIO · EPSI Montpellier</span>
+  </div>
+</footer>
+
+<!-- ░░ BACK TO TOP ░░ -->
+<button id="backToTop" class="back-to-top hidden" aria-label="Retour en haut de page">▲</button>
+
+<!-- ░░ MODAL ░░ -->
+<div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
+  <div class="pixel-modal" id="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- ░░ MODAL DATA ░░ -->
+<template id="modal-bataille">
+  <div class="modal-inner">
+    <div class="modal-badge">PHP</div>
+    <h3>Bataille Navale</h3>
+    <img src="img/projet/bataille-navale.jpeg" alt="Capture d'écran du jeu Bataille Navale" class="modal-img">
+    <p class="modal-date">1 octobre — 15 décembre 2025</p>
+    <p>À tour de rôle, chaque joueur indique à l'autre sa frappe en désignant une position. Lorsqu'un navire est touché, l'emplacement devient négatif. Si le coup tombe à l'eau, il est symbolisé par un X. La victoire est obtenue quand l'un des joueurs a coulé toute la flotte adverse. Projet en binôme.</p>
+    <div class="modal-btns">
+      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/bataille_navale/Mini projet Algo.pdf','_blank')">Sujet</button>
+      <a class="pixel-btn btn-primary" href="docs/projet/bataille_navale/affichetab.php" download>⌨️ Code</a>
+    </div>
+  </div>
+</template>
+
+<template id="modal-gite">
+  <div class="modal-inner">
+    <div class="modal-badge">SQL · BDD</div>
+    <h3>Projet Gîtes</h3>
+    <p class="modal-date">Novembre — 16 décembre 2025</p>
+    <p>Conception et mise en œuvre d'une base de données pour gérer les réservations et les informations sur les gîtes. Projet de groupe.</p>
+    <div class="modal-btns">
+      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/gite/SN1 Projet BD -  Gites.pdf','_blank')">Sujet</button>
+      <button class="pixel-btn btn-primary" onclick="window.open('docs/projet/gite/Projet_BD_Marylou-Imane-Bayane-Noura-Lucas.pdf','_blank')">Livrable</button>
+    </div>
+  </div>
+</template>
+
+<template id="modal-bubbly">
+  <div class="modal-inner">
+    <div class="modal-badge">PHP · SQL · HTML/CSS</div>
+    <h3>Bubbly</h3>
+    <p class="modal-date">6 — 26 janvier 2026</p>
+    <p>Développement d'une application de clavardage en ligne permettant l'échange de messages entre plusieurs utilisateurs. Projet de groupe.</p>
+    <div class="modal-btns">
+      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/bubbly/B1 - EPTR - Projet transversal Web.pdf','_blank')">Sujet</button>
+      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank">⌨️ Code</a>
+    </div>
+  </div>
+</template>
+
+<template id="modal-hotel">
+  <div class="modal-inner">
+    <div class="modal-badge">PHP · SQL · HTML/CSS</div>
+    <h3>Hôtel Neptune</h3>
+    <p class="modal-date">22 janvier — 5 février 2026</p>
+    <p>Développement d'une application web en PHP, SQL, HTML et CSS, comprenant des fonctionnalités pour le public et pour les employés (privées). Projet de groupe.</p>
+    <div class="modal-btns">
+      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/hotel-neptune/01 Sujet.pdf','_blank')">Sujet</button>
+      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank">⌨️ Code</a>
+    </div>
+  </div>
+</template>
+
+<template id="modal-python">
+  <div class="modal-inner">
+    <div class="modal-badge">Python · POO</div>
+    <h3>Système de Réservation de Ressources</h3>
+    <p class="modal-date">1 — 17 février 2026</p>
+    <p>Programme pour gérer des ressources variées dans une université (livres, matériel, salles). Les utilisateurs peuvent réserver et suivre la disponibilité selon des règles. Projet de groupe, de la logique simple jusqu'à la POO et la persistance des données.</p>
+    <div class="modal-btns">
+      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/python/B1 Projet Python 2025-2026.pdf','_blank')">Sujet</button>
+      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank">⌨️ Code</a>
+    </div>
+  </div>
+</template>
+
+<template id="modal-stage1">
+  <div class="modal-inner">
+    <div class="modal-badge">Stage 2025</div>
+    <h3>Stage en événementiel</h3>
+    <p class="modal-date">2025 — Secteur événementiel</p>
+    <p>Stage au sein du secteur événementiel, durant lequel j'ai pu participer à :</p>
+    <ul class="modal-list">
+      <li>La gestion d'une base de données de contacts</li>
+      <li>La gestion des réseaux sociaux</li>
+      <li>L'emailing</li>
+    </ul>
+  </div>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>
