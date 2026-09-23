@@ -323,23 +323,28 @@
 
   <div id="annee2" class="tab-content">
     <div class="projects-grid">
-      <div class="project-card coming-soon">
+      <!--
+        POUR AJOUTER UN NOUVEAU PROJET :
+        1. Copie tout le bloc <div class="project-card" ...> ci-dessous, jusqu'a la balise </div> qui le ferme.
+        2. Colle la copie juste apres, toujours a l'interieur de "projects-grid".
+        3. Change le titre, la description, les dates et les tags.
+        4. Choisis un nom unique pour onclick="openModal('...')" (ex: 'siteweb2', 'reseau2').
+        5. Tout en bas du fichier, duplique <template id="modal-projet2a"> de la meme facon,
+           avec le MEME nom unique, et mets les vraies infos + le bon chemin vers ton PDF.
+        6. Mets ton fichier dans un nouveau dossier : docs/projet/nom-du-dossier/
+      -->
+      <div class="project-card" onclick="openModal('projet2a')">
         <div class="card-screen">
           <div class="card-pixel-art loading-art"></div>
         </div>
         <div class="card-info">
-          <h3>Projet</h3>
-          <p>En cours de construction…</p>
+          <div class="card-badge-lang">LANGAGE</div>
+          <h3>Nom du projet</h3>
+          <p class="card-desc">Description courte du projet ici.</p>
+          <p class="card-date">Mois — Mois 2026</p>
+          <div class="card-tags"><span>TAG1</span><span>TAG2</span></div>
         </div>
-      </div>
-      <div class="project-card coming-soon">
-        <div class="card-screen">
-          <div class="card-pixel-art loading-art"></div>
-        </div>
-        <div class="card-info">
-          <h3>Projet</h3>
-          <p>En cours de construction…</p>
-        </div>
+        <div class="card-hover-overlay">VOIR ▶</div>
       </div>
     </div>
   </div>
@@ -571,6 +576,18 @@
       <li>La gestion des réseaux sociaux</li>
       <li>L'emailing</li>
     </ul>
+  </div>
+</template>
+
+<template id="modal-projet2a">
+  <div class="modal-inner">
+    <div class="modal-badge">LANGAGE</div>
+    <h3>Nom du projet</h3>
+    <p class="modal-date">Mois — Mois 2026</p>
+    <p>Description complete du projet : contexte, objectif, ce que tu as fait.</p>
+    <div class="modal-btns">
+      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/nom-du-dossier/nom-du-fichier.pdf','_blank')">Sujet</button>
+    </div>
   </div>
 </template>
 
