@@ -257,6 +257,7 @@
   <div class="projects-tabs">
     <button class="tab-btn active" onclick="switchTab('annee1')">Année 1</button>
     <button class="tab-btn" onclick="switchTab('annee2')">Année 2</button>
+    <button class="tab-btn" onclick="switchTab('perso')">Projets perso</button>
     <button class="tab-btn" onclick="switchTab('e4')">Épreuve E4</button>
   </div>
 
@@ -346,6 +347,25 @@
            avec le MEME nom unique, et mets les vraies infos + le bon chemin vers ton PDF.
         6. Mets ton fichier dans un nouveau dossier : docs/projet/nom-du-dossier/
       -->
+      <div class="project-card" onclick="openModal('projet2a')">
+        <div class="card-screen">
+          <div class="card-pixel-art loading-art"></div>
+        </div>
+        <div class="card-info">
+          <div class="card-badge-lang">LANGAGE</div>
+          <h3>Nom du projet</h3>
+          <p class="card-desc">Description courte du projet ici.</p>
+          <p class="card-date">Mois — Mois 2026</p>
+          <div class="card-tags"><span>TAG1</span><span>TAG2</span></div>
+        </div>
+        <div class="card-hover-overlay">VOIR ▶</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="perso" class="tab-content">
+    <div class="projects-grid">
+      <!-- Tes projets persos, pas faits pour l'ecole. Meme logique pour en ajouter un nouveau. -->
       <div class="project-card" onclick="openModal('lumi')">
         <div class="card-screen">
           <div class="card-pixel-art loading-art"></div>
@@ -601,6 +621,18 @@
     <div class="modal-btns">
       <a class="pixel-btn btn-primary" href="https://github.com/Noura250/Lumi" target="_blank">⌨️ Code</a>
       <a class="pixel-btn btn-secondary" href="https://github.com/Noura250/Lumi#readme" target="_blank">📄 README</a>
+    </div>
+  </div>
+</template>
+
+<template id="modal-projet2a">
+  <div class="modal-inner">
+    <div class="modal-badge">LANGAGE</div>
+    <h3>Nom du projet</h3>
+    <p class="modal-date">Mois — Mois 2026</p>
+    <p>Description complete du projet : contexte, objectif, ce que tu as fait.</p>
+    <div class="modal-btns">
+      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/nom-du-dossier/nom-du-fichier.pdf','_blank')">Sujet</button>
     </div>
   </div>
 </template>
