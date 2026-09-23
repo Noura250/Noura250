@@ -346,16 +346,16 @@
            avec le MEME nom unique, et mets les vraies infos + le bon chemin vers ton PDF.
         6. Mets ton fichier dans un nouveau dossier : docs/projet/nom-du-dossier/
       -->
-      <div class="project-card" onclick="openModal('projet2a')">
+      <div class="project-card" onclick="openModal('lumi')">
         <div class="card-screen">
           <div class="card-pixel-art loading-art"></div>
         </div>
         <div class="card-info">
-          <div class="card-badge-lang">LANGAGE</div>
-          <h3>Nom du projet</h3>
-          <p class="card-desc">Description courte du projet ici.</p>
-          <p class="card-date">Mois — Mois 2026</p>
-          <div class="card-tags"><span>TAG1</span><span>TAG2</span></div>
+          <div class="card-badge-lang">PHP · MySQL</div>
+          <h3>Lumi</h3>
+          <p class="card-desc">Application de messagerie web complète : salons publics/privés, messages privés, système d'amis et notifications.</p>
+          <p class="card-date">Depuis sept. 2026</p>
+          <div class="card-tags"><span>PHP</span><span>MySQL</span><span>Sécurité</span></div>
         </div>
         <div class="card-hover-overlay">VOIR ▶</div>
       </div>
@@ -592,14 +592,15 @@
   </div>
 </template>
 
-<template id="modal-projet2a">
+<template id="modal-lumi">
   <div class="modal-inner">
-    <div class="modal-badge">LANGAGE</div>
-    <h3>Nom du projet</h3>
-    <p class="modal-date">Mois — Mois 2026</p>
-    <p>Description complete du projet : contexte, objectif, ce que tu as fait.</p>
+    <div class="modal-badge">PHP · MySQL</div>
+    <h3>Lumi</h3>
+    <p class="modal-date">Depuis septembre 2026 — Projet personnel</p>
+    <p>Une vraie plateforme de messagerie que je développe en dehors des cours : création de salons publics et privés, conversations privées, système d'amis avec demandes et notifications, gestion des rôles utilisateur/administrateur. J'ai aussi travaillé la sécurité : requêtes préparées avec PDO, mots de passe hashés, protection CSRF et sessions sécurisées. C'est le projet dont je suis la plus fière pour l'instant.</p>
     <div class="modal-btns">
-      <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/nom-du-dossier/nom-du-fichier.pdf','_blank')">Sujet</button>
+      <a class="pixel-btn btn-primary" href="https://github.com/Noura250/Lumi" target="_blank">⌨️ Code</a>
+      <a class="pixel-btn btn-secondary" href="https://github.com/Noura250/Lumi#readme" target="_blank">📄 README</a>
     </div>
   </div>
 </template>
