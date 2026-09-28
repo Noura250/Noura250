@@ -3,7 +3,7 @@
 </p>
 
 # 💫 About Me:
-💻 Bienvenue sur mon GitHub !<br><br>Je suis étudiante en BTS SIO option SISR, passionnée par l’informatique et les nouvelles technologies.<br>À travers cet espace, je partage les projets que je réalise durant ma formation ainsi que mes projets personnels.<br><br>Vous y découvrirez mon évolution, mes expérimentations et les différentes technologies que j’apprends et utilise au quotidien.<br>Ce GitHub représente à la fois mon parcours, ma curiosité et ma progression dans le domaine de l’administration systèmes, réseaux et de la cybersécurité.<br>
+💻 Bienvenue sur mon GitHub !<br><br>Je suis étudiante en BTS SIO option SLAM (Solutions Logicielles et Applications Métiers), passionnée par le développement et les nouvelles technologies.<br>Cet espace regroupe les projets réalisés durant ma formation ainsi que mes projets personnels, comme [Lumi](https://github.com/Noura250/Lumi), une application de messagerie web en PHP et MySQL.<br><br>Vous y découvrirez mon évolution, mes expérimentations et les technologies que j’apprends et utilise au quotidien : PHP, Python, SQL, JavaScript…<br>Ce GitHub reflète mon parcours, ma curiosité et ma progression dans le développement d’applications et les bases de données, avec l’ambition de me spécialiser en data analyse.<br>
 
 
 # 💻 Tech Stack:
