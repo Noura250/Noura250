@@ -3,11 +3,11 @@
 </p>
 
 # 💫 About Me:
-💻 Bienvenue sur mon GitHub !Je suis étudiante en BTS SIO option SLAM (Solutions Logicielles et Applications Métiers), passionnée par le développement et les nouvelles technologies.
+💻 Bienvenue sur mon GitHub !
 
-Cet espace regroupe les projets réalisés durant ma formation ainsi que mes projets personnels, comme [Lumi](https://github.com/Noura250/Lumi), une application de messagerie web en PHP et MySQL.
+Moi c'est Noura, étudiante en BTS SIO option SLAM (Solutions Logicielles et Applications Métiers) à l'EPSI Montpellier, passionnée par le développement et les nouvelles technologies. J'aime construire des applications de A à Z, de la base de données jusqu'à l'interface, et comprendre comment tout fonctionne.
 
-Vous y découvrirez mon évolution, mes expérimentations et les technologies que j’apprends et utilise au quotidien : PHP, Python, SQL, JavaScript…<br>Ce GitHub reflète mon parcours, ma curiosité et ma progression dans le développement d’applications et les bases de données, avec l’ambition de me spécialiser en data analyse.
+Ici, je partage mes projets de formation et mes projets personnels, comme [Lumi](https://github.com/Noura250/Lumi), une messagerie web en PHP et MySQL que je développe en ce moment. Vous y découvrirez mon évolution, mes expérimentations et les technologies que j'apprends et utilise au quotidien.
 
 
 # 💻 Tech Stack:
