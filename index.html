@@ -23,14 +23,23 @@
      Tu peux changer les textes d’attente dans ce fichier JavaScript. -->
 <div id="bootScreen" class="boot-screen" role="status" aria-live="polite">
   <div class="boot-content">
-    <div class="boot-badge">★ SYSTEM BOOT ★</div>
+    <!-- Le cadre reprend les fenêtres rétro du portfolio. Les trois carrés sont décoratifs. -->
+    <div class="boot-window-bar" aria-hidden="true">
+      <span>PORTFOLIO / BOOT</span><span class="boot-window-controls">■ ■ ■</span>
+    </div>
+    <div class="boot-panel">
+    <div class="boot-badge">★ BIENVENUE ★</div>
     <div class="boot-logo">NOURA.SLAM</div>
+    <p class="boot-subtitle">Développement web <span aria-hidden="true">/</span> Data</p>
+    <div class="boot-details" aria-hidden="true"><span>INITIALISATION DU PORTFOLIO</span><span>01 / 01</span></div>
     <div class="boot-bar-track">
       <div class="boot-bar-fill" id="bootBarFill"></div>
     </div>
     <div class="boot-row">
       <span class="boot-pct" id="bootPct">0%</span>
       <span class="boot-tip" id="bootTip">Initialisation...</span>
+    </div>
+    <p class="boot-footer">BTS SIO · SLAM <span aria-hidden="true">✦</span> Montpellier</p>
     </div>
   </div>
 </div>
@@ -53,7 +62,7 @@
      Chaque href qui commence par # rejoint la section portant cet id. -->
 <nav class="pixel-nav">
   <div class="nav-logo">
-    <span class="blink">▶</span> NOURA.EXE
+    <span aria-hidden="true">▶</span> NOURA.EXE
   </div>
   <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">
     <span></span><span></span><span></span>
