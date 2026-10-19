@@ -1136,3 +1136,15 @@ body {
   .pixel-nav { padding: 12px 16px; }
   .nav-logo { font-size: 8px; }
 }
+
+/* Les liens et sous-titres rendent les documents et les missions faciles à retrouver.
+   Les boutons peuvent revenir à la ligne pour rester lisibles sur un petit écran. */
+.e4-document-link { margin: 18px 0; }
+.e4-document-link .pixel-btn { white-space: normal; line-height: 1.8; }
+.modal-subtitle {
+  font-family: var(--font-mono);
+  color: var(--cyan);
+  font-size: 18px;
+  margin: 24px 0 12px;
+}
+.modal-tech { color: var(--purple-l); }
