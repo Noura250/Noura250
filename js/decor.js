@@ -43,6 +43,7 @@
       x: Math.random(),
       y: Math.random(),
       r: Math.random() * 1.5 + 0.5,
+      twinkle: Math.random() * Math.PI * 2,
     });
   }
 
@@ -62,7 +63,8 @@
     // Les coordonnées sont des proportions : on les multiplie par la taille actuelle du dessin.
     // L’opérateur | 0 retire la partie décimale pour placer les carrés sur des pixels entiers.
     stars.forEach((s) => {
-      const alpha = 0.75;
+      // On conserve la luminosité variée du dessin d’origine, sans la faire évoluer.
+      const alpha = 0.5 + 0.5 * Math.sin(s.twinkle);
       ctx.fillStyle = `rgba(232,224,255,${alpha})`;
       ctx.fillRect((s.x * W) | 0, (s.y * H * 0.6) | 0, s.r | 0, s.r | 0);
     });

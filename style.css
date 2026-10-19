@@ -1102,3 +1102,22 @@ body {
 /* Le lien du compte rendu reste séparé du résumé et s’adapte aux petits écrans. */
 .veille-card p + p { margin-top: 12px; }
 .veille-document { margin-top: 20px; white-space: normal; line-height: 1.8; }
+
+/* Le bilan reste lisible en deux colonnes sur grand écran, puis en une seule sur mobile.
+   Les sous-titres distinguent la motivation, la méthode et les apprentissages. */
+.veille-bilan {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 32px;
+  margin-top: 28px;
+}
+.veille-bilan h5 {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+.veille-period { color: var(--purple-l); margin-bottom: 12px; }
+@media (max-width: 700px) {
+  .veille-bilan { grid-template-columns: 1fr; }
+}
