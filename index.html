@@ -283,8 +283,8 @@
 </section>
 
 <!--
-  Les projets sont rangés dans trois onglets. js/projets.js affiche celui sur lequel on clique.
-  Le data-tab d’un bouton doit reprendre l’id de son contenu : annee1, annee2 ou perso.
+  Les projets sont rangés dans quatre onglets. js/projets.js affiche celui sur lequel on clique.
+  Le data-tab d’un bouton doit reprendre l’id de son contenu : annee1, annee2, perso ou e4.
   Chaque carte donne un résumé. Son onclick ouvre les détails conservés dans un template en bas de ce fichier.
   Le résumé et les détails sont deux textes distincts : si un projet change, vérifier les deux.
 -->
@@ -299,6 +299,7 @@
     <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="annee1" data-tab="annee1">Année 1</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="annee2" data-tab="annee2">Année 2</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="perso" data-tab="perso">Projets perso</button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="e4" data-tab="e4">Épreuve E4</button>
   </div>
 
   <div id="annee1" class="tab-content active">
@@ -421,12 +422,17 @@
     </div>
   </div>
 
-  <!-- Cet accès reste visible quelle que soit la catégorie de projets choisie.
-       Le tableau se consulte et se modifie sur sa propre page. -->
-  <div id="e4" class="e4-access">
-    <h3 class="e4-title">Épreuve E4</h3>
-    <p>Mon tableau de synthèse regroupe mes réalisations et les compétences mobilisées pendant ma formation.</p>
-    <a class="pixel-btn btn-secondary" href="e4.html">Consulter et modifier le tableau →</a>
+  <!-- Le tableau retrouve sa place dans l’onglet E4 des projets.
+       Le bouton ouvre le PDF à part si le navigateur ne l’affiche pas directement dans la page. -->
+  <div id="e4" class="tab-content">
+    <div class="e4-container">
+      <h3 class="e4-title">// Épreuve E4</h3>
+      <p class="e4-intro">Mon tableau de synthèse présente mes réalisations professionnelles et les compétences mobilisées au cours de ma formation en BTS SIO, option SLAM.</p>
+      <p class="e4-document-link"><a class="pixel-btn btn-secondary" href="docs/projet/tableau-synthese-e5.pdf" target="_blank" rel="noopener noreferrer">Ouvrir le tableau de synthèse (PDF)</a></p>
+      <div class="pdf-wrapper">
+        <iframe src="docs/projet/tableau-synthese-e5.pdf" width="100%" height="650" loading="lazy" title="Tableau de synthèse des réalisations professionnelles — Épreuve E5"></iframe>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -507,48 +513,49 @@
   <p class="section-intro">La veille technologique est une pratique régulière qui consiste à s'informer sur les dernières innovations du secteur. Elle permet d'anticiper les évolutions techniques, de découvrir de nouveaux outils et de maintenir ses compétences à jour.</p>
   <div class="veilles-grid">
     <div class="veille-card">
-      <div class="veille-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 13.5 4.5h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5h-.5a.5.5 0 0 1 0-1H2v-1H1.5a.5.5 0 0 1 0-1H2v-1H1.5a.5.5 0 0 1 0-1H2v-1H1.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V1.5A.5.5 0 0 1 5 0"/>
-        </svg>
-      </div>
-      <h4>Les cyberattaques en France</h4>
-      <p class="veille-period">Janvier à mars 2026 · Cybersécurité</p>
-      <p>J’ai suivi les cyberattaques en France, en particulier les rançongiciels, le vol de mots de passe et l’utilisation de l’intelligence artificielle pour rendre les arnaques plus crédibles.</p>
-      <!-- Le bilan est visible ici pour expliquer la démarche sans obliger à ouvrir le PDF.
-           Le compte rendu complet reste accessible avec le bouton en bas de la carte. -->
+      <header class="veille-heading">
+        <div class="veille-labels"><span>VEILLE 01</span><span>JANVIER — MARS 2026</span></div>
+        <h3>Les cyberattaques en France<span aria-hidden="true">_</span></h3>
+        <p>Comprendre les menaces pour mieux protéger les données.</p>
+        <ul class="veille-topics" aria-label="Thèmes suivis"><li>Rançongiciels</li><li>Vol de données</li><li>IA &amp; hameçonnage</li></ul>
+      </header>
+      <!-- Les explications se déplient au clic pour garder une section courte.
+           Chaque rubrique reste accessible au clavier et le PDF est disponible en dessous. -->
       <div class="veille-bilan">
-        <div>
-          <h5>Pourquoi j’ai choisi ce sujet</h5>
+        <details class="veille-detail">
+          <summary>Pourquoi j’ai choisi ce sujet</summary>
           <p>Les cyberattaques concernent aussi bien les entreprises que les hôpitaux, les mairies et les établissements scolaires. Je voulais comprendre leurs conséquences sur les services et les données personnelles, ainsi que l’évolution des méthodes utilisées par les attaquants.</p>
-        </div>
-        <div>
-          <h5>Ce que je voulais comprendre</h5>
+        </details>
+        <details class="veille-detail">
+          <summary>Ce que je voulais comprendre</summary>
           <p>Mon objectif était de suivre les menaces sur trois mois, de repérer les secteurs touchés et de comprendre comment l’IA intervient dans les tentatives de fraude. Je m’intéressais aussi aux moyens de protection et au rôle des organismes comme l’ANSSI.</p>
-        </div>
-        <div>
-          <h5>Comment j’ai organisé ma veille</h5>
+        </details>
+        <details class="veille-detail">
+          <summary>Comment j’ai organisé ma veille</summary>
           <p>J’ai associé les alertes automatiques de Google Alerts à des recherches dans les rapports officiels. Feedly regroupait les actualités, tandis que des filtres et des libellés Gmail m’aidaient à trier les informations. J’ai ensuite classé les éléments retenus par thème et par date.</p>
-        </div>
-        <div>
-          <h5>Les sources utilisées</h5>
+        </details>
+        <details class="veille-detail">
+          <summary>Les sources utilisées</summary>
           <p>Je me suis appuyée notamment sur l’ANSSI, Cybermalveillance.gouv.fr et Vie-publique.fr, avec des médias spécialisés pour suivre l’actualité. Les références et les outils utilisés sont présentés dans mon compte rendu.</p>
-        </div>
-        <div>
-          <h5>Ce que cette veille m’a apporté</h5>
+        </details>
+        <details class="veille-detail">
+          <summary>Ce que cette veille m’a apporté</summary>
           <p>J’ai mieux compris les différences entre rançongiciel, vol d’identifiants et hameçonnage, ainsi que la place de l’IA dans les arnaques. Cette démarche m’a aussi permis de travailler la recherche d’informations, le tri des sources et la synthèse, au lieu de simplement accumuler des articles.</p>
-        </div>
-        <div>
-          <h5>Ce que j’en retiens pour la suite</h5>
+        </details>
+        <details class="veille-detail">
+          <summary>Ce que j’en retiens pour la suite</summary>
           <p>La sécurité fait partie du travail de développement : les comptes et les données des utilisateurs doivent être protégés. Je retiens surtout l’importance de la vigilance face aux messages suspects et de la double authentification. Ce premier bilan porte sur une période limitée ; poursuivre la veille permettra de suivre l’évolution des menaces.</p>
-        </div>
+        </details>
       </div>
       <!--
         Le bouton ouvre le compte rendu original, conservé dans docs/veille/.
         Pour publier une nouvelle version au même endroit, remplacer ce PDF en gardant son nom.
         Si le fichier est renommé, modifier aussi le href du lien juste en dessous.
       -->
-      <a class="pixel-btn btn-secondary veille-document" href="docs/veille/veille-cyberattaques-france.pdf" target="_blank" rel="noopener noreferrer">Lire ma veille (PDF)</a>
+      <div class="veille-download">
+        <div><span class="veille-download-label">POUR ALLER PLUS LOIN</span><p>La démarche, les sources et l’analyse dans mon compte rendu.</p></div>
+        <a class="pixel-btn btn-secondary veille-document" href="docs/veille/veille-cyberattaques-france.pdf" target="_blank" rel="noopener noreferrer">Lire ma veille (PDF) ↗</a>
+      </div>
     </div>
   </div>
 </section>

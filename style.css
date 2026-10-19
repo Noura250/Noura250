@@ -1103,39 +1103,26 @@ body {
 .veille-card p + p { margin-top: 12px; }
 .veille-document { margin-top: 20px; white-space: normal; line-height: 1.8; }
 
-/* Le bilan reste lisible en deux colonnes sur grand écran, puis en une seule sur mobile.
-   Les sous-titres distinguent la motivation, la méthode et les apprentissages. */
-.veille-bilan {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px 32px;
-  margin-top: 28px;
+/* La veille reste compacte : le sujet et le PDF sont visibles, les détails s’ouvrent à la demande. */
+#veilles .veilles-grid { display: block; max-width: 900px; }
+#veilles .veille-card { padding: 0; overflow: hidden; border-color: var(--purple); }
+.veille-heading { padding: 24px; border-bottom: 1px solid var(--gray); }
+.veille-labels { display: flex; flex-wrap: wrap; gap: 8px 20px; font: 11px var(--font-mono); color: var(--purple-l); margin-bottom: 14px; }
+.veille-labels span:first-child { color: var(--cyan); }
+.veille-heading h3 { font: clamp(13px, 2vw, 18px)/1.7 var(--font-px); color: var(--white); margin-bottom: 10px; }
+.veille-heading h3 span { color: var(--pink); }
+.veille-topics { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin-top: 14px; }
+.veille-topics li { padding: 3px 8px; border: 1px solid var(--gray); font: 11px var(--font-mono); color: var(--cyan); }
+.veille-bilan { padding: 0 24px; }
+.veille-detail { border-bottom: 1px solid var(--gray); }
+.veille-detail:last-child { border-bottom: 0; }
+.veille-detail summary { padding: 13px 0; cursor: pointer; color: var(--cyan); font: 15px/1.5 var(--font-mono); }
+.veille-detail summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.veille-detail p { padding: 0 0 16px; line-height: 1.7; max-width: 75ch; }
+.veille-download { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding: 20px 24px; border-top: 1px solid var(--gray); }
+.veille-download-label { display: block; font: 10px var(--font-mono); color: var(--purple-l); margin-bottom: 6px; }
+.veille-download .veille-document { margin-top: 0; }
+@media (max-width: 500px) {
+  .veille-heading, .veille-download { padding: 18px; }
+  .veille-bilan { padding: 0 18px; }
 }
-.veille-bilan h5 {
-  font-family: var(--font-mono);
-  font-size: 17px;
-  color: var(--cyan);
-  margin-bottom: 10px;
-}
-.veille-period { color: var(--purple-l); margin-bottom: 12px; }
-@media (max-width: 700px) {
-  .veille-bilan { grid-template-columns: 1fr; }
-}
-
-/* L’accès E4 reste en dehors des onglets pour être visible dans toutes les catégories. */
-.e4-access { margin-top: 32px; padding: 24px; border: 2px solid var(--purple-l); background: var(--bg2); }
-.e4-access .pixel-btn { margin-top: 20px; white-space: normal; line-height: 1.8; }
-.e4-page { max-width: 1600px; margin: 0 auto; padding: 32px 20px; }
-.e4-page-title { color: var(--cyan); margin: 28px 0 12px; }
-.e4-page > p { margin-bottom: 16px; max-width: 900px; }
-.e4-actions { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
-.e4-actions .pixel-btn { white-space: normal; line-height: 1.8; }
-#editorStatus { min-height: 28px; color: var(--cyan); }
-.e4-table-scroll { overflow-x: auto; border: 2px solid var(--purple-l); }
-#e4Table { border-collapse: collapse; width: 100%; min-width: 1600px; table-layout: fixed; }
-#e4Table caption { padding: 16px; text-align: left; background: var(--bg2); }
-#e4Table td { border: 1px solid var(--gray); padding: 0; vertical-align: top; }
-#e4Table td:first-child { width: 320px; }
-#e4Table textarea { display: block; width: 100%; min-height: 100px; padding: 12px; resize: vertical; border: 0; border-radius: 0; background: var(--bg2); color: var(--white); font: 14px/1.5 var(--font-mono); }
-#e4Table tr:nth-child(6) textarea { min-height: 180px; }
-#e4Table tr:nth-child(7) textarea { min-height: 460px; }
