@@ -283,8 +283,8 @@
 </section>
 
 <!--
-  Les projets sont rangés dans quatre onglets. js/projets.js affiche celui sur lequel on clique.
-  Le data-tab d’un bouton doit reprendre l’id de son contenu : annee1, annee2, perso ou e4.
+  Les projets sont rangés dans trois onglets. js/projets.js affiche celui sur lequel on clique.
+  Le data-tab d’un bouton doit reprendre l’id de son contenu : annee1, annee2 ou perso.
   Chaque carte donne un résumé. Son onclick ouvre les détails conservés dans un template en bas de ce fichier.
   Le résumé et les détails sont deux textes distincts : si un projet change, vérifier les deux.
 -->
@@ -299,7 +299,6 @@
     <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="annee1" data-tab="annee1">Année 1</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="annee2" data-tab="annee2">Année 2</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="perso" data-tab="perso">Projets perso</button>
-    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="e4" data-tab="e4">Épreuve E4</button>
   </div>
 
   <div id="annee1" class="tab-content active">
@@ -422,17 +421,12 @@
     </div>
   </div>
 
-  <div id="e4" class="tab-content">
-    <div class="e4-container">
-      <h3 class="e4-title">// Épreuve E4</h3>
-      <p class="e4-intro">Mon tableau de synthèse présente mes réalisations professionnelles et les compétences mobilisées au cours de ma formation en BTS SIO, option SLAM.</p>
-      <!--
-        Le tableau se télécharge au format Excel pour pouvoir être consulté et complété.
-        Pour le mettre à jour, remplacer le fichier dans docs/projet/ en gardant le même nom.
-        Les navigateurs ne lisent pas directement un fichier Excel comme un PDF : on propose donc un téléchargement.
-      -->
-      <p class="e4-document-link"><a class="pixel-btn btn-secondary" href="docs/projet/tableau-synthese-e5.xlsx" download="Tableau de synthèse Épreuve E5.xlsx">Télécharger le tableau de synthèse (Excel · E5)</a></p>
-    </div>
+  <!-- Cet accès reste visible quelle que soit la catégorie de projets choisie.
+       Le tableau se consulte et se modifie sur sa propre page. -->
+  <div id="e4" class="e4-access">
+    <h3 class="e4-title">Épreuve E4</h3>
+    <p>Mon tableau de synthèse regroupe mes réalisations et les compétences mobilisées pendant ma formation.</p>
+    <a class="pixel-btn btn-secondary" href="e4.html">Consulter et modifier le tableau →</a>
   </div>
 </section>
 
