@@ -18,11 +18,13 @@
 </head>
 <body>
 
-<!-- ░░ BOOT / LOADING SCREEN ░░ -->
+<!-- Écran de chargement.
+     Les éléments bootBarFill, bootPct et bootTip sont mis à jour par js/chargement.js.
+     Tu peux changer les textes d’attente dans ce fichier JavaScript. -->
 <div id="bootScreen" class="boot-screen" role="status" aria-live="polite">
   <div class="boot-content">
     <div class="boot-badge">★ SYSTEM BOOT ★</div>
-    <div class="boot-logo glitch" data-text="NOURA.EXE">NOURA.EXE</div>
+    <div class="boot-logo">NOURA.SLAM</div>
     <div class="boot-bar-track">
       <div class="boot-bar-fill" id="bootBarFill"></div>
     </div>
@@ -35,27 +37,21 @@
 
 <a href="#moi" class="skip-link">Aller au contenu principal</a>
 
-<!-- ░░ SCANLINES OVERLAY ░░ -->
-<div class="scanlines"></div>
 
-<!-- ░░ SCROLL PROGRESS (XP BAR) ░░ -->
+<!-- Avancement dans la page -->
 <div class="scroll-xp-track" aria-hidden="true"><div class="scroll-xp-fill" id="scrollXpFill"></div></div>
 
-<!-- ░░ PIXEL CITY BACKGROUND ░░ -->
-<div class="city-bg">
+<!-- Ville en fond.
+     Le dessin est fait dans js/decor.js. Il reste fixe et s’adapte à la largeur de l’écran.
+     aria-hidden évite de faire lire ce décor aux lecteurs d’écran. -->
+<div class="city-bg" aria-hidden="true">
   <canvas id="cityCanvas"></canvas>
 </div>
 
-<!-- ░░ GUIDE CHARACTER (NPC Noura) ░░ -->
-<div id="guide" class="guide-char">
-  <div class="guide-bubble" id="guideBubble">
-    <span id="guideText">Salut ! Je suis Noura, clique sur une section pour explorer mon univers !</span>
-    <div class="bubble-tail"></div>
-  </div>
-  <canvas id="characterCanvas" width="64" height="96"></canvas>
-</div>
 
-<!-- ░░ NAV BAR ░░ -->
+<!-- Menu.
+     Chaque href qui commence par # rejoint la section portant cet id.
+     Le texte data-msg est repris par le guide au survol du lien. -->
 <nav class="pixel-nav">
   <div class="nav-logo">
     <span class="blink">▶</span> NOURA.EXE
@@ -73,7 +69,9 @@
   </div>
 </nav>
 
-<!-- ░░ HERO ░░ -->
+<!-- Accueil.
+     Le nom et les boutons se modifient directement ici.
+     Les premières lignes du terminal sont écrites en HTML ; ses commandes sont dans js/terminal.js. -->
 <section id="hero" class="hero-section">
   <div class="hero-content">
     <div class="hero-badge">
@@ -84,12 +82,12 @@
       <div class="xp-bar"><div class="xp-fill" style="width:72%"></div></div>
       <span class="xp-val">720/1000</span>
     </div>
-    <h1 class="hero-title glitch" data-text="NOURA">NOURA</h1>
+    <h1 class="hero-title">NOURA</h1>
     <h2 class="hero-subtitle">GUELLO IBRAHIM</h2>
     <p class="hero-role">// Étudiante BTS SIO · Option SLAM · Développement & Data</p>
     <div class="hero-btns">
       <a href="#projets" class="pixel-btn btn-primary">▶ VOIR MES PROJETS</a>
-      <a href="docs/CV_INFORMATIQUE_noura.pdf" class="pixel-btn btn-secondary" target="_blank">MON CV</a>
+      <a href="docs/CV_INFORMATIQUE_noura.pdf" class="pixel-btn btn-secondary" target="_blank" rel="noopener noreferrer">MON CV</a>
     </div>
     <div class="hero-tags">
       <span class="tag">PHP</span><span class="tag">Python</span><span class="tag">SQL</span>
@@ -117,7 +115,9 @@
   </div>
 </section>
 
-<!-- ░░ SECTION MOI ░░ -->
+<!-- À propos.
+     La photo utilise un dessin de secours si son fichier ne se charge pas.
+     Les pourcentages des compétences se règlent avec la largeur de chaque skill-fill. -->
 <section id="moi" class="pixel-section">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -172,13 +172,15 @@
       <div class="contact-pills">
         <a href="tel:0762017280" class="pill">07 62 01 72 80</a>
         <a href="mailto:Nouraguelloibrahim@gmail.com" class="pill">Nouraguelloibrahim@gmail.com</a>
-        <a href="docs/CV_INFORMATIQUE_noura.pdf" class="pill btn-cv" target="_blank">Mon CV</a>
+        <a href="docs/CV_INFORMATIQUE_noura.pdf" class="pill btn-cv" target="_blank" rel="noopener noreferrer">Mon CV</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ SECTION PARCOURS ░░ -->
+<!-- Parcours.
+     Chaque timeline-node représente une étape. Pour en ajouter une, copie un bloc complet
+     et adapte la date, le titre et l’établissement. La classe active marque l’étape actuelle. -->
 <section id="parcours" class="pixel-section dark-section">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -246,7 +248,9 @@
   </div>
 </section>
 
-<!-- ░░ SECTION PROJETS ░░ -->
+<!-- Projets.
+     Chaque bouton data-tab correspond à un bloc qui porte le même id, plus bas.
+     Pour changer le classement, garde bien cette correspondance entre bouton et contenu. -->
 <section id="projets" class="pixel-section">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -254,11 +258,11 @@
     <div class="section-line"></div>
   </div>
 
-  <div class="projects-tabs">
-    <button class="tab-btn active" onclick="switchTab('annee1')">Année 1</button>
-    <button class="tab-btn" onclick="switchTab('annee2')">Année 2</button>
-    <button class="tab-btn" onclick="switchTab('perso')">Projets perso</button>
-    <button class="tab-btn" onclick="switchTab('e4')">Épreuve E4</button>
+  <div class="projects-tabs" role="tablist" aria-label="Catégories de projets">
+    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="annee1" data-tab="annee1">Année 1</button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="annee2" data-tab="annee2">Année 2</button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="perso" data-tab="perso">Projets perso</button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="e4" data-tab="e4">Épreuve E4</button>
   </div>
 
   <div id="annee1" class="tab-content active">
@@ -337,16 +341,10 @@
 
   <div id="annee2" class="tab-content">
     <div class="projects-grid">
-      <!--
-        POUR AJOUTER UN NOUVEAU PROJET :
-        1. Copie tout le bloc <div class="project-card" ...> ci-dessous, jusqu'a la balise </div> qui le ferme.
-        2. Colle la copie juste apres, toujours a l'interieur de "projects-grid".
-        3. Change le titre, la description, les dates et les tags.
-        4. Choisis un nom unique pour onclick="openModal('...')" (ex: 'siteweb2', 'reseau2').
-        5. Tout en bas du fichier, duplique <template id="modal-projet2a"> de la meme facon,
-           avec le MEME nom unique, et mets les vraies infos + le bon chemin vers ton PDF.
-        6. Mets ton fichier dans un nouveau dossier : docs/projet/nom-du-dossier/
-      -->
+      <!-- Pour ajouter un projet, copie une carte existante et un template en bas du fichier.
+           Choisis une clé, par exemple « monprojet » : la carte appellera openModal('monprojet')
+           et le template devra avoir l’id « modal-monprojet ».
+           Remplace ensuite le titre, la description, les dates et les liens vers tes documents. -->
       <div class="project-card" onclick="openModal('projet2a')">
         <div class="card-screen">
           <div class="card-pixel-art loading-art"></div>
@@ -388,14 +386,16 @@
       <p class="e4-intro">L'E4 (Conception et maintenance de solutions informatiques) est une épreuve officielle du BTS SIO qui évalue la capacité à analyser un besoin et proposer une solution technique. Voici le sujet traité :</p>
       <div class="pdf-wrapper">
         <iframe src="docs/projet/epreuve-e4.pdf" width="100%" height="650px" title="Sujet de l'épreuve E4">
-          <p>Votre navigateur ne supporte pas l'affichage PDF. <a href="docs/projet/epreuve-e4.pdf" target="_blank">Consulter ici →</a></p>
+          <p>Votre navigateur ne supporte pas l'affichage PDF. <a href="docs/projet/epreuve-e4.pdf" target="_blank" rel="noopener noreferrer">Consulter ici →</a></p>
         </iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ SECTION STAGES ░░ -->
+<!-- Stages.
+     Chaque carte appelle openModal avec une clé qui correspond à un template en bas du fichier.
+     Modifie la carte pour le résumé, et le template correspondant pour les détails et les documents. -->
 
 <section id="stages" class="pixel-section dark-section">
   <div class="section-header">
@@ -447,7 +447,9 @@
   </div>
 </section>
 
-<!-- ░░ SECTION VEILLES ░░ -->
+<!-- Veille.
+     Les cartes regroupent les sujets suivis et leurs liens.
+     Tu peux reprendre la même structure pour ajouter une nouvelle veille. -->
 <section id="veilles" class="pixel-section">
   <div class="section-header">
     <span class="section-num">05</span>
@@ -469,7 +471,9 @@
   </div>
 </section>
 
-<!-- ░░ SECTION CONTACT ░░ -->
+<!-- Contact.
+     Les champs sont récupérés par js/contact.js grâce à leurs id : garde-les si tu modifies le formulaire.
+     L’envoi nécessite un serveur de contact ; son adresse se règle dans ce même fichier JavaScript. -->
 <section id="contact" class="pixel-section dark-section">
   <div class="section-header">
     <span class="section-num">06</span>
@@ -486,10 +490,10 @@
         <a href="tel:0762017280" class="contact-link">
           <span>07 62 01 72 80</span>
         </a>
-        <a href="https://linkedin.com" target="_blank" class="contact-link">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span>LinkedIn</span>
         </a>
-        <a href="https://github.com" target="_blank" class="contact-link">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span>GitHub</span>
         </a>
       </div>
@@ -511,7 +515,7 @@
   </div>
 </section>
 
-<!-- ░░ FOOTER ░░ -->
+<!-- Pied de page -->
 <footer class="pixel-footer">
   <div class="footer-inner">
     <span>© 2026 NOURA GUELLO IBRAHIM</span>
@@ -520,18 +524,22 @@
   </div>
 </footer>
 
-<!-- ░░ BACK TO TOP ░░ -->
+<!-- Retour en haut -->
 <button id="backToTop" class="back-to-top hidden" aria-label="Retour en haut de page">▲</button>
 
-<!-- ░░ MODAL ░░ -->
+<!-- Fenêtre des projets.
+     Ce cadre est partagé par tous les projets et stages : le JavaScript y place le bon template.
+     Un clic sur le fond, sur la croix ou sur Échap permet de le fermer. -->
 <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
-  <div class="pixel-modal" id="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="pixel-modal" id="modal-box" role="dialog" aria-modal="true" aria-label="Détails du projet">
+    <button aria-label="Fermer la fenêtre" class="modal-close" onclick="closeModal()">✕</button>
     <div id="modal-content"></div>
   </div>
 </div>
 
-<!-- ░░ MODAL DATA ░░ -->
+<!-- Contenu des projets.
+     Un template garde du HTML en réserve : il n’apparaît pas directement dans la page.
+     js/projets.js copie le bon contenu dans la fenêtre quand on clique sur une carte. -->
 <template id="modal-bataille">
   <div class="modal-inner">
     <div class="modal-badge">PHP</div>
@@ -567,7 +575,7 @@
     <p>Développement d'une application de clavardage en ligne permettant l'échange de messages entre plusieurs utilisateurs. Projet de groupe.</p>
     <div class="modal-btns">
       <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/bubbly/B1 - EPTR - Projet transversal Web.pdf','_blank')">Sujet</button>
-      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank">⌨️ Code</a>
+      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank" rel="noopener noreferrer">⌨️ Code</a>
     </div>
   </div>
 </template>
@@ -580,7 +588,7 @@
     <p>Développement d'une application web en PHP, SQL, HTML et CSS, comprenant des fonctionnalités pour le public et pour les employés (privées). Projet de groupe.</p>
     <div class="modal-btns">
       <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/hotel-neptune/01 Sujet.pdf','_blank')">Sujet</button>
-      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank">⌨️ Code</a>
+      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank" rel="noopener noreferrer">⌨️ Code</a>
     </div>
   </div>
 </template>
@@ -593,7 +601,7 @@
     <p>Programme pour gérer des ressources variées dans une université (livres, matériel, salles). Les utilisateurs peuvent réserver et suivre la disponibilité selon des règles. Projet de groupe, de la logique simple jusqu'à la POO et la persistance des données.</p>
     <div class="modal-btns">
       <button class="pixel-btn btn-secondary" onclick="window.open('docs/projet/python/B1 Projet Python 2025-2026.pdf','_blank')">Sujet</button>
-      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank">⌨️ Code</a>
+      <a class="pixel-btn btn-primary" href="https://github.com" target="_blank" rel="noopener noreferrer">⌨️ Code</a>
     </div>
   </div>
 </template>
@@ -625,7 +633,7 @@
       <li>Conception graphique (Figma) et identité visuelle</li>
     </ul>
     <div class="modal-btns">
-      <a class="pixel-btn btn-primary" href="docs/stage/rapport-stage-1ere-annee-exocoms.pdf" target="_blank">📄 Rapport complet</a>
+      <a class="pixel-btn btn-primary" href="docs/stage/rapport-stage-1ere-annee-exocoms.pdf" target="_blank" rel="noopener noreferrer">📄 Rapport complet</a>
     </div>
   </div>
 </template>
@@ -637,8 +645,8 @@
     <p class="modal-date">Depuis septembre 2026 — Projet personnel</p>
     <p>Une vraie plateforme de messagerie que je développe en dehors des cours : création de salons publics et privés, conversations privées, système d'amis avec demandes et notifications, gestion des rôles utilisateur/administrateur. J'ai aussi travaillé la sécurité : requêtes préparées avec PDO, mots de passe hashés, protection CSRF et sessions sécurisées. C'est le projet dont je suis la plus fière pour l'instant.</p>
     <div class="modal-btns">
-      <a class="pixel-btn btn-primary" href="https://github.com/Noura250/Lumi" target="_blank">⌨️ Code</a>
-      <a class="pixel-btn btn-secondary" href="https://github.com/Noura250/Lumi#readme" target="_blank">📄 README</a>
+      <a class="pixel-btn btn-primary" href="https://github.com/Noura250/Lumi" target="_blank" rel="noopener noreferrer">⌨️ Code</a>
+      <a class="pixel-btn btn-secondary" href="https://github.com/Noura250/Lumi#readme" target="_blank" rel="noopener noreferrer">📄 README</a>
     </div>
   </div>
 </template>
@@ -655,6 +663,16 @@
   </div>
 </template>
 
-<script src="script.js"></script>
+<!-- Les scripts attendent que le HTML soit prêt grâce à defer, puis sont exécutés dans cet ordre.
+     Garde guide.js avant navigation.js, projets.js et contact.js : ils utilisent ses messages.
+     Chaque fichier s’occupe d’une fonctionnalité pour faciliter les modifications. -->
+<script src="js/chargement.js" defer></script>
+<script src="js/decor.js" defer></script>
+<script src="js/guide.js" defer></script>
+<script src="js/navigation.js" defer></script>
+<script src="js/projets.js" defer></script>
+<script src="js/contact.js" defer></script>
+<script src="js/avatar.js" defer></script>
+<script src="js/terminal.js" defer></script>
 </body>
 </html>

@@ -1,2 +1,4 @@
+# macOS crée ces fichiers pour mémoriser l’affichage des dossiers dans le Finder.
+# Ils ne sont pas utiles au projet ; on les ignore à la racine et dans les sous-dossiers.
 .DS_Store
 **/.DS_Store

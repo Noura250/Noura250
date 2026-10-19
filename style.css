@@ -1,8 +1,8 @@
-/* ================================================
-   NOURA PORTFOLIO — PIXEL ART STYLE 2026
-   Palette: Midnight City — purple/pink/cyan/black
-   ================================================ */
+/* Style du portfolio. */
 
+/* Les couleurs et les polices communes sont définies ici.
+   Pour changer la palette du portfolio, commence par ces variables :
+   les règles qui utilisent var(...) reprendront les nouvelles valeurs. */
 :root {
   --bg:        #0d0b1e;
   --bg2:       #12102a;
@@ -23,7 +23,9 @@
 
 html { scroll-behavior: smooth; }
 
-/* ── ACCESSIBILITY UTILITIES ── */
+/* Accessibilité.
+   Ces éléments facilitent la navigation au clavier et avec un lecteur d’écran.
+   La classe sr-only cache un texte visuellement tout en le gardant accessible. */
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
@@ -50,6 +52,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline-offset: 3px;
 }
 
+/* Certains visiteurs demandent moins de mouvement dans les réglages de leur appareil.
+   On raccourcit les animations CSS et on désactive le défilement doux pour eux. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -68,22 +72,9 @@ body {
   overflow-x: hidden;
 }
 
-/* ── SCANLINES ── */
-.scanlines {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0,0,0,0.07) 2px,
-    rgba(0,0,0,0.07) 4px
-  );
-}
-
-/* ── CITY BG ── */
+/* Ville en fond.
+   Le canvas reste en bas de l’écran, derrière le contenu.
+   Sa transparence garde les textes lisibles et pointer-events laisse passer les clics. */
 .city-bg {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -94,7 +85,9 @@ body {
 }
 #cityCanvas { width: 100%; height: 100%; }
 
-/* ── GUIDE CHARACTER ── */
+/* Personnage du guide.
+   Le guide reste dans un coin de la fenêtre pendant la visite.
+   Sa bulle peut être masquée sans retirer le personnage, grâce à la classe hidden. */
 .guide-char {
   position: fixed;
   bottom: 30px;
@@ -138,7 +131,9 @@ body {
   image-rendering: crisp-edges;
 }
 
-/* ── BOOT SCREEN ── */
+/* Écran de chargement.
+   Le chargement recouvre la page au démarrage.
+   La classe boot-done déclenche sa disparition avant que le JavaScript ne retire le bloc. */
 .boot-screen {
   position: fixed;
   inset: 0;
@@ -187,7 +182,9 @@ body {
 .boot-pct { color: var(--cyan); }
 .boot-tip { color: var(--gray); }
 
-/* ── SCROLL PROGRESS (XP) ── */
+/* Avancement dans la page.
+   La piste reste en haut de l’écran. Le JavaScript modifie la largeur
+   de son remplissage pour représenter la position dans la page. */
 .scroll-xp-track {
   position: fixed;
   top: 0; left: 0;
@@ -201,7 +198,9 @@ body {
   transition: width 0.1s linear;
 }
 
-/* ── NAV ── */
+/* Menu.
+   Ces règles définissent la barre de navigation et ses liens.
+   Sur mobile, le bouton de menu prend le relais avec les règles adaptées plus bas. */
 .pixel-nav {
   position: sticky;
   top: 0; z-index: 500;
@@ -255,7 +254,9 @@ body {
   text-shadow: 0 0 8px var(--pink);
 }
 
-/* ── HERO ── */
+/* Accueil.
+   Le premier écran présente le nom, les boutons et le terminal.
+   Les tailles avec clamp() varient selon l’écran, entre un minimum et un maximum. */
 .hero-section {
   min-height: 100vh;
   display: grid;
@@ -311,34 +312,6 @@ body {
   margin-bottom: 8px;
   position: relative;
 }
-.glitch::before, .glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-}
-.glitch::before {
-  color: var(--pink);
-  animation: glitch1 3s infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
-}
-.glitch::after {
-  color: var(--cyan);
-  animation: glitch2 3s infinite;
-  clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
-}
-@keyframes glitch1 {
-  0%,90%,100% { transform: translateX(0); }
-  92% { transform: translateX(-3px); }
-  94% { transform: translateX(3px); }
-  96% { transform: translateX(-3px); }
-}
-@keyframes glitch2 {
-  0%,90%,100% { transform: translateX(0); }
-  93% { transform: translateX(3px); }
-  95% { transform: translateX(-3px); }
-  97% { transform: translateX(2px); }
-}
 .hero-subtitle {
   font-family: var(--font-px);
   font-size: clamp(14px, 2vw, 22px);
@@ -392,7 +365,9 @@ body {
   color: var(--purple-l);
 }
 
-/* ── HERO SCREEN ── */
+/* Terminal de l’accueil.
+   Le cadre imite un écran de terminal. Les classes delay décalent
+   l’apparition des lignes de présentation pour les afficher progressivement. */
 .hero-screen {
   display: flex;
   justify-content: center;
@@ -458,7 +433,9 @@ body {
 }
 .terminal-input:focus { outline: none; }
 
-/* ── SECTIONS ── */
+/* Sections.
+   Ces styles sont communs aux grandes parties du portfolio :
+   espacements, numéros, titres et lignes de séparation. */
 .pixel-section {
   padding: 80px 60px;
   position: relative;
@@ -497,7 +474,9 @@ body {
   line-height: 1.7;
 }
 
-/* ── ABOUT ── */
+/* À propos.
+   La présentation est organisée en colonnes : portrait et statut d’un côté,
+   biographie et compétences de l’autre. Les règles pour petit écran adaptent cette disposition. */
 .about-grid {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -582,7 +561,9 @@ body {
 }
 .pill:hover, .btn-cv { background: var(--purple); border-color: var(--purple-l); }
 
-/* ── TIMELINE ── */
+/* Parcours.
+   Les étapes du parcours partagent la même structure visuelle.
+   La classe active distingue l’étape actuelle des précédentes. */
 .timeline-world { display: flex; flex-direction: column; gap: 48px; }
 .timeline-track {
   display: flex;
@@ -647,7 +628,9 @@ body {
 .connector-line { flex: 1; height: 2px; background: var(--purple-l); }
 .connector-icons { font-size: 14px; color: var(--purple-l); }
 
-/* ── SKILLS DOMAINS ── */
+/* Compétences.
+   Ces cartes regroupent les compétences par domaine.
+   Les petites étiquettes en bas listent les technologies associées. */
 .skills-world-title {
   font-family: var(--font-mono);
   font-size: 16px;
@@ -679,7 +662,9 @@ body {
   color: var(--white);
 }
 
-/* ── PROJECTS TABS ── */
+/* Onglets des projets.
+   Le JavaScript ajoute la classe active au bouton et au contenu choisis.
+   Ces règles décident ensuite de leur apparence et de leur visibilité. */
 .projects-tabs { display: flex; gap: 4px; margin-bottom: 32px; }
 .tab-btn {
   font-family: var(--font-px);
@@ -699,7 +684,9 @@ body {
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* ── PROJECT CARDS ── */
+/* Cartes des projets.
+   Chaque carte contient un aperçu, les informations du projet et une indication au survol.
+   Les grilles distribuent les cartes selon la place disponible dans la page. */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -734,7 +721,9 @@ body {
   width: 100px; height: 100px;
   image-rendering: pixelated;
 }
-/* Pixel art via CSS box-shadows for each project */
+/* Dessins des projets en CSS.
+   Les ombres box-shadow répètent de petits carrés pour former les aperçus.
+   Tu peux changer leurs couleurs ou leurs positions pour modifier un dessin. */
 .battle-art {
   background: var(--cyan);
   clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
@@ -820,7 +809,9 @@ body {
 }
 .project-card:hover .card-hover-overlay { opacity: 1; }
 
-/* ── E4 ── */
+/* E4.
+   Le cadre réserve de la place au document PDF intégré dans la page.
+   Le chemin du document se modifie dans le src de l’iframe, dans index.html. */
 .e4-container { max-width: 900px; }
 .e4-title {
   font-family: var(--font-mono);
@@ -834,7 +825,9 @@ body {
   box-shadow: 6px 6px 0 var(--purple);
 }
 
-/* ── STAGES ───────────────────────────── */
+/* Stages.
+   Les cartes de stage présentent la période, l’entreprise et les informations principales.
+   Elles ouvrent la même fenêtre de détails que les cartes de projets. */
 
 .stage-world{
     display:flex;
@@ -907,7 +900,9 @@ body {
     color:var(--pink);
 }
 
-/* ── Responsive ───────────────────────── */
+/* Affichage sur petit écran.
+   Les règles ci-dessous adaptent les blocs à la largeur disponible.
+   Elles remplacent seulement les propriétés qui doivent changer à ces tailles. */
 
 @media (max-width:900px){
 
@@ -936,7 +931,9 @@ body {
 
 }
 
-/* ── VEILLES ── */
+/* Veilles.
+   Ces cartes présentent les sujets de veille. La classe coming
+   permet de donner un aspect plus discret à un contenu encore à venir. */
 .veilles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .veille-card {
   background: var(--bg2);
@@ -962,7 +959,9 @@ body {
 }
 .veille-card p { font-size: 16px; }
 
-/* ── CONTACT ── */
+/* Contact.
+   Le bloc rassemble les coordonnées et le formulaire.
+   Les champs, le bouton d’envoi et les messages de retour ont leurs styles ici. */
 .contact-world {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1011,7 +1010,8 @@ body {
 .toast.error { background: var(--pink); color: #fff; }
 .toast.hidden { display: none; }
 
-/* ── FOOTER ── */
+/* Pied de page.
+   La fin du site reprend les informations courtes placées dans le footer du HTML. */
 .pixel-footer {
   background: var(--bg2);
   border-top: 3px solid var(--purple);
@@ -1027,7 +1027,9 @@ body {
   color: var(--gray);
 }
 
-/* ── BACK TO TOP ── */
+/* Retour en haut.
+   Le bouton reste accessible pendant le défilement.
+   La classe hidden le rend invisible et empêche les clics quand il n’est pas utile. */
 .back-to-top {
   position: fixed;
   bottom: 30px; left: 24px;
@@ -1046,7 +1048,9 @@ body {
 .back-to-top.hidden { opacity: 0; pointer-events: none; transform: translateY(10px); }
 @media (max-width: 900px) { .back-to-top { bottom: 16px; left: 12px; width: 38px; height: 38px; } }
 
-/* ── MODAL ── */
+/* Fenêtre des projets.
+   Le fond recouvre la page pendant l’ouverture. La classe hidden le masque.
+   Le contenu de la fenêtre vient du template sélectionné dans index.html. */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1109,7 +1113,9 @@ body {
 .modal-list li { margin-bottom: 6px; }
 .modal-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
 
-/* ── RESPONSIVE ── */
+/* Affichage sur petit écran.
+   Les règles ci-dessous adaptent les blocs à la largeur disponible.
+   Elles remplacent seulement les propriétés qui doivent changer à ces tailles. */
 @media (max-width: 900px) {
   .hero-section {
     grid-template-columns: 1fr;
