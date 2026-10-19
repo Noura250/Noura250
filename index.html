@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noura Guello Ibrahim · Portfolio · BTS SIO SLAM</title>
+  <!--
+    La description et les propriétés og: servent aux moteurs de recherche et aux aperçus des liens partagés.
+    Quand la présentation du portfolio change, penser à actualiser aussi ces textes.
+  -->
   <meta name="description" content="Portfolio de Noura Guello Ibrahim, étudiante BTS SIO option SLAM à l'EPSI Montpellier — projets PHP, Python, SQL, bases de données et data analyse.">
   <meta name="theme-color" content="#0d0b1e">
   <meta property="og:type" content="website">
@@ -11,6 +15,10 @@
   <meta property="og:description" content="Étudiante BTS SIO SLAM — projets web, bases de données & data analyse.">
   <meta property="og:image" content="img/img.jpeg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230d0b1e'/%3E%3Crect x='3' y='2' width='10' height='9' fill='%239b5de5'/%3E%3Crect x='5' y='4' width='2' height='2' fill='%230d0b1e'/%3E%3Crect x='9' y='4' width='2' height='2' fill='%230d0b1e'/%3E%3Crect x='5' y='12' width='2' height='2' fill='%23f72585'/%3E%3Crect x='9' y='12' width='2' height='2' fill='%234cc9f0'/%3E%3C/svg%3E">
+  <!--
+    Les polices sont chargées depuis Google Fonts. Leurs noms sont repris dans les variables de style.css.
+    Si elles ne sont pas disponibles, le navigateur utilise les polices de secours définies dans le CSS.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -18,9 +26,12 @@
 </head>
 <body>
 
-<!-- Écran de chargement.
-     Les éléments bootBarFill, bootPct et bootTip sont mis à jour par js/chargement.js.
-     Tu peux changer les textes d’attente dans ce fichier JavaScript. -->
+<!--
+  Le chargement apparaît avant le contenu du portfolio, avec le nom, la barre et un petit texte d’attente.
+  Les trois id bootBarFill, bootPct et bootTip servent à mettre à jour ces éléments dans js/chargement.js.
+  Les phrases qui défilent et la durée minimale de cet écran se changent dans ce fichier JS.
+  Le logo reste fixe : il n’y a plus d’effet glitch dessus.
+-->
 <div id="bootScreen" class="boot-screen" role="status" aria-live="polite">
   <div class="boot-content">
     <div class="boot-badge">★ SYSTEM BOOT ★</div>
@@ -38,19 +49,30 @@
 <a href="#moi" class="skip-link">Aller au contenu principal</a>
 
 
-<!-- Avancement dans la page -->
+<!--
+  Cette barre tout en haut indique où on en est dans la page.
+  Elle se remplit quand on descend ; son calcul est dans js/navigation.js.
+  Elle est décorative, donc aria-hidden permet de ne pas la faire lire comme du contenu.
+-->
 <div class="scroll-xp-track" aria-hidden="true"><div class="scroll-xp-fill" id="scrollXpFill"></div></div>
 
-<!-- Ville en fond.
-     Le dessin est fait dans js/decor.js. Il reste fixe et s’adapte à la largeur de l’écran.
-     aria-hidden évite de faire lire ce décor aux lecteurs d’écran. -->
+<!--
+  La ville du bas est dessinée dans ce canvas par js/decor.js.
+  Ce n’est pas un fichier image à remplacer : pour changer les bâtiments ou les couleurs, il faut passer par ce JS.
+  Le décor reste fixe et se redessine seulement quand la taille de la fenêtre change.
+  Il ne contient aucune information à lire, d’où aria-hidden sur le bloc.
+-->
 <div class="city-bg" aria-hidden="true">
   <canvas id="cityCanvas"></canvas>
 </div>
 
 
-<!-- Menu.
-     Chaque href qui commence par # rejoint la section portant cet id. -->
+<!--
+  Le menu permet de rejoindre les grandes parties sans quitter la page.
+  Par exemple, href="#projets" fait descendre jusqu’au bloc qui a l’id projets.
+  Sur téléphone, navToggle ouvre les liens rangés dans navLinks ; js/navigation.js gère ce bouton.
+  Si on renomme l’id d’une section, il faut aussi corriger le lien correspondant ici.
+-->
 <nav class="pixel-nav">
   <div class="nav-logo">
     <span aria-hidden="true">▶</span> NOURA.EXE
@@ -68,9 +90,12 @@
   </div>
 </nav>
 
-<!-- Accueil.
-     Le nom et les boutons se modifient directement ici.
-     Les premières lignes du terminal sont écrites en HTML ; ses commandes sont dans js/terminal.js. -->
+<!--
+  C’est la première partie visible après le chargement : le nom, la présentation et les liens principaux.
+  Le bouton des projets rejoint la section plus bas ; celui du CV ouvre le PDF rangé dans docs/.
+  Le terminal à droite a ses premières lignes écrites ici, puis js/terminal.js ajoute les réponses aux commandes.
+  Pour changer la présentation de départ, on peut donc modifier ce HTML sans toucher aux commandes.
+-->
 <section id="hero" class="hero-section">
   <div class="hero-content">
     <div class="hero-badge">
@@ -106,6 +131,10 @@
         <div class="screen-line delay-7">→ Data analyse & développement</div>
         <div class="screen-line delay-7 terminal-hint">→ Tape "help" ci-dessous et appuie sur Entrée ⌨️</div>
       </div>
+      <!--
+        Ce champ envoie la commande au JavaScript quand on appuie sur Entrée.
+        Il ne lance rien sur un serveur : les réponses disponibles sont définies dans js/terminal.js.
+      -->
       <form id="terminalForm" class="terminal-input-row" autocomplete="off">
         <span class="terminal-prompt">guest@noura:~$</span>
         <input type="text" id="terminalInput" class="terminal-input" aria-label="Terminal interactif — tape une commande" placeholder="help">
@@ -114,9 +143,12 @@
   </div>
 </section>
 
-<!-- À propos.
-     La photo utilise un dessin de secours si son fichier ne se charge pas.
-     Les pourcentages des compétences se règlent avec la largeur de chaque skill-fill. -->
+<!--
+  Cette partie regroupe la photo, la présentation et les compétences.
+  La photo vient de img/img.jpeg. Si elle ne charge pas, son onerror affiche le portrait de secours préparé par js/avatar.js.
+  Pour modifier un niveau de compétence, on change la valeur width dans la barre concernée, par exemple 70%.
+  Les coordonnées et le lien du CV sont aussi écrits ici : penser à les mettre à jour ensemble s’ils changent.
+-->
 <section id="moi" class="pixel-section">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -177,9 +209,12 @@
   </div>
 </section>
 
-<!-- Parcours.
-     Chaque timeline-node représente une étape. Pour en ajouter une, copie un bloc complet
-     et adapte la date, le titre et l’établissement. La classe active marque l’étape actuelle. -->
+<!--
+  Le parcours se lit étape par étape, de la formation actuelle vers les précédentes.
+  Chaque bloc timeline-node contient une année, un titre et le texte de présentation.
+  La classe active et le badge CURRENT signalent la formation en cours.
+  Pour ajouter une étape, reprendre un bloc complet et le séparateur timeline-connector placé entre deux étapes.
+-->
 <section id="parcours" class="pixel-section dark-section">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -247,9 +282,12 @@
   </div>
 </section>
 
-<!-- Projets.
-     Chaque bouton data-tab correspond à un bloc qui porte le même id, plus bas.
-     Pour changer le classement, garde bien cette correspondance entre bouton et contenu. -->
+<!--
+  Les projets sont rangés dans quatre onglets. js/projets.js affiche celui sur lequel on clique.
+  Le data-tab d’un bouton doit reprendre l’id de son contenu : annee1, annee2, perso ou e4.
+  Chaque carte donne un résumé. Son onclick ouvre les détails conservés dans un template en bas de ce fichier.
+  Le résumé et les détails sont deux textes distincts : si un projet change, vérifier les deux.
+-->
 <section id="projets" class="pixel-section">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -340,10 +378,12 @@
 
   <div id="annee2" class="tab-content">
     <div class="projects-grid">
-      <!-- Pour ajouter un projet, copie une carte existante et un template en bas du fichier.
-           Choisis une clé, par exemple « monprojet » : la carte appellera openModal('monprojet')
-           et le template devra avoir l’id « modal-monprojet ».
-           Remplace ensuite le titre, la description, les dates et les liens vers tes documents. -->
+      <!--
+        Cette carte sert de modèle pour les projets de deuxième année et contient encore des textes à remplacer.
+        Pour ajouter un vrai projet, copier la carte et lui choisir une clé, par exemple monprojet.
+        Son appel sera openModal('monprojet') ; il faudra ensuite créer un template avec l’id modal-monprojet en bas du fichier.
+        Compléter le titre, la description, la période et les technologies, puis ajouter les bons documents dans le template.
+      -->
       <div class="project-card" onclick="openModal('projet2a')">
         <div class="card-screen">
           <div class="card-pixel-art loading-art"></div>
@@ -362,7 +402,10 @@
 
   <div id="perso" class="tab-content">
     <div class="projects-grid">
-      <!-- Tes projets persos, pas faits pour l'ecole. Meme logique pour en ajouter un nouveau. -->
+      <!--
+        Les projets réalisés en dehors des cours sont regroupés ici.
+        Lumi utilise la même fenêtre de détails que les projets scolaires : sa fiche complète est dans modal-lumi plus bas.
+      -->
       <div class="project-card" onclick="openModal('lumi')">
         <div class="card-screen">
           <div class="card-pixel-art loading-art"></div>
@@ -383,8 +426,12 @@
     <div class="e4-container">
       <h3 class="e4-title">// Épreuve E4</h3>
       <p class="e4-intro">Mon tableau de synthèse présente mes réalisations professionnelles et les compétences mobilisées au cours de ma formation en BTS SIO, option SLAM.</p>
-      <!-- Le lien reste accessible sur mobile, même si le navigateur n’affiche pas le PDF intégré.
-           Pour remplacer le document, mets la nouvelle version au même emplacement dans docs/projet/. -->
+      <!--
+        Le tableau est affiché directement dans la page, mais le bouton permet aussi de l’ouvrir à part,
+        notamment si le navigateur du téléphone ne propose pas la lecture dans l’iframe.
+        Le document fourni porte le nom E5 ; il est rangé ici dans l’onglet E4 comme demandé.
+        Pour le remplacer, garder le même nom de fichier ou modifier à la fois le href du bouton et le src de l’iframe.
+      -->
       <p class="e4-document-link"><a class="pixel-btn btn-secondary" href="docs/projet/tableau-synthese-e5.pdf" target="_blank" rel="noopener noreferrer">↗ Ouvrir le tableau de synthèse (PDF · E5)</a></p>
       <div class="pdf-wrapper">
         <iframe src="docs/projet/tableau-synthese-e5.pdf" width="100%" height="650" loading="lazy" title="Tableau de synthèse des réalisations professionnelles — Épreuve E5"></iframe>
@@ -393,9 +440,12 @@
   </div>
 </section>
 
-<!-- Stages.
-     Chaque carte appelle openModal avec une clé qui correspond à un template en bas du fichier.
-     Modifie la carte pour le résumé, et le template correspondant pour les détails et les documents. -->
+<!--
+  Les cartes ci-dessous présentent les deux stages avec un résumé des missions.
+  Le clic sur une carte ouvre sa fiche détaillée : stage2026 correspond à modal-stage2026, et de même pour 2025.
+  Pour corriger une mission ou une période, regarder aussi le template concerné en bas du fichier.
+  Le rapport complet du stage Exocoms est accessible depuis sa fiche détaillée.
+-->
 
 <section id="stages" class="pixel-section dark-section">
   <div class="section-header">
@@ -406,7 +456,10 @@
 
   <div class="stage-world">
 
-    <!-- Stage 2026 -->
+    <!--
+      Stage chez Exocoms : ce résumé reste court pour donner un aperçu avant d’ouvrir les détails.
+      La fiche modal-stage2026 contient les missions développées, les apprentissages et le lien du rapport.
+    -->
     <div class="stage-card" onclick="openModal('stage2026')">
       <div class="stage-content">
         <div class="stage-year">2026</div>
@@ -425,7 +478,10 @@
       </div>
     </div>
 
-    <!-- Stage 2025 -->
+    <!--
+      Stage de 2025 dans l’événementiel : les trois missions principales sont présentées ici.
+      Le complément affiché au clic se trouve dans modal-stage2025.
+    -->
     <div class="stage-card" onclick="openModal('stage2025')">
       <div class="stage-content">
         <div class="stage-year">2025</div>
@@ -447,9 +503,11 @@
   </div>
 </section>
 
-<!-- Veille.
-     Les cartes regroupent les sujets suivis et leurs liens.
-     Tu peux reprendre la même structure pour ajouter une nouvelle veille. -->
+<!--
+  Cette section présente les sujets de veille et donne accès aux comptes rendus.
+  La carte actuelle concerne les cyberattaques en France et résume le document fourni.
+  Pour ajouter une autre veille, copier une veille-card dans cette grille, puis adapter le titre, le résumé et le lien PDF.
+-->
 <section id="veilles" class="pixel-section">
   <div class="section-header">
     <span class="section-num">05</span>
@@ -467,16 +525,22 @@
       <h4>Les cyberattaques en France</h4>
       <p>Veille menée au premier trimestre 2026 sur les rançongiciels, le vol de données et l’utilisation de l’IA par les attaquants, avec un suivi des menaces qui touchent les services publics et les entreprises.</p>
       <p>Mon compte rendu présente ma méthode de recherche, mes outils de veille et les sources consultées, notamment l’ANSSI et Cybermalveillance.gouv.fr.</p>
-      <!-- Le compte rendu est conservé dans docs/veille/. Pour l’actualiser,
-           remplace le PDF au même emplacement ou adapte le lien ci-dessous. -->
+      <!--
+        Le bouton ouvre le compte rendu original, conservé dans docs/veille/.
+        Pour publier une nouvelle version au même endroit, remplacer ce PDF en gardant son nom.
+        Si le fichier est renommé, modifier aussi le href du lien juste en dessous.
+      -->
       <a class="pixel-btn btn-secondary veille-document" href="docs/veille/veille-cyberattaques-france.pdf" target="_blank" rel="noopener noreferrer">Lire ma veille (PDF)</a>
     </div>
   </div>
 </section>
 
-<!-- Contact.
-     Les champs sont récupérés par js/contact.js grâce à leurs id : garde-les si tu modifies le formulaire.
-     L’envoi nécessite un serveur de contact ; son adresse se règle dans ce même fichier JavaScript. -->
+<!--
+  Les coordonnées à gauche permettent de prendre contact directement ; le formulaire est à droite.
+  js/contact.js récupère les champs grâce aux id f-name, f-email, f-subject et f-message : garder ces noms si on retouche la mise en page.
+  L’envoi passe par le serveur défini dans ce JS. Une page GitHub Pages seule ne peut pas recevoir les messages du formulaire.
+  Le bloc form-toast placé après le formulaire affiche le résultat de l’envoi ou le message d’erreur.
+-->
 <section id="contact" class="pixel-section dark-section">
   <div class="section-header">
     <span class="section-num">06</span>
@@ -518,7 +582,10 @@
   </div>
 </section>
 
-<!-- Pied de page -->
+<!--
+  Le pied de page termine le portfolio avec la signature et les informations courtes.
+  Son texte se modifie directement ici, indépendamment du menu et de la présentation d’accueil.
+-->
 <footer class="pixel-footer">
   <div class="footer-inner">
     <span>© 2026 NOURA GUELLO IBRAHIM</span>
@@ -527,12 +594,18 @@
   </div>
 </footer>
 
-<!-- Retour en haut -->
+<!--
+  Ce bouton remonte en haut de la page. Il est caché au départ grâce à hidden.
+  js/navigation.js le fait apparaître après 500 pixels de défilement et gère le retour en haut au clic.
+-->
 <button id="backToTop" class="back-to-top hidden" aria-label="Retour en haut de page">▲</button>
 
-<!-- Fenêtre des projets.
-     Ce cadre est partagé par tous les projets et stages : le JavaScript y place le bon template.
-     Un clic sur le fond, sur la croix ou sur Échap permet de le fermer. -->
+<!--
+  Une seule fenêtre sert à tous les projets et stages.
+  À l’ouverture, js/projets.js copie la fiche choisie dans modal-content et bloque le défilement derrière.
+  Un clic sur le fond, la croix ou Échap ferme la fenêtre ; un clic dans son contenu la laisse ouverte.
+  Les attributs du dialogue et le déplacement du focus permettent aussi de l’utiliser au clavier.
+-->
 <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
   <div class="pixel-modal" id="modal-box" role="dialog" aria-modal="true" aria-label="Détails du projet">
     <button aria-label="Fermer la fenêtre" class="modal-close" onclick="closeModal()">✕</button>
@@ -540,9 +613,12 @@
   </div>
 </div>
 
-<!-- Contenu des projets.
-     Un template garde du HTML en réserve : il n’apparaît pas directement dans la page.
-     js/projets.js copie le bon contenu dans la fenêtre quand on clique sur une carte. -->
+<!--
+  Les fiches complètes sont conservées dans les templates qui suivent.
+  Leur contenu reste invisible tant que js/projets.js ne le copie pas dans la fenêtre au-dessus.
+  Le nom est important : une carte qui appelle openModal('bataille') cherche précisément le template modal-bataille.
+  Les liens vers les sujets, le code et les rapports se modifient dans ces fiches, et non dans la fenêtre partagée.
+-->
 <template id="modal-bataille">
   <div class="modal-inner">
     <div class="modal-badge">PHP</div>
@@ -629,8 +705,11 @@
     <h3>Stage en développement Odoo / e-commerce</h3>
     <p class="modal-date">23 avril — 12 juin 2026 · Exocoms Group</p>
     <p>Durant ces 7 semaines chez Exocoms Group, j’ai travaillé sur le site e-commerce Monétique.fr, consacré aux solutions de paiement et hébergé sur Odoo SH. Mon objectif était de créer une vitrine adaptée à l’entreprise et de mettre en valeur son catalogue de 80 produits.</p>
-    <!-- Les missions ci-dessous résument le rapport de stage. Le PDF reste disponible à la fin
-         pour consulter la démarche complète, les choix techniques et les exemples de réalisation. -->
+    <!--
+      Le texte suivant résume les missions décrites dans le rapport Exocoms : conception, développement, catalogue, tests et déploiement.
+      La partie sur les apprentissages complète ce résumé, puis le bouton donne accès au rapport entier.
+      Pour ajouter une précision, la placer dans la mission concernée plutôt que d’allonger le paragraphe d’introduction.
+    -->
     <h4 class="modal-subtitle">Mes principales missions</h4>
     <ul class="modal-list">
       <li><strong>Conception visuelle :</strong> création des maquettes sur Figma et définition d’une identité graphique cohérente pour le site.</li>
@@ -661,6 +740,10 @@
   </div>
 </template>
 
+<!--
+  Cette fiche va avec la carte de démonstration de deuxième année.
+  Remplacer aussi son lien PDF avant de l’utiliser : le chemin nom-du-dossier/nom-du-fichier.pdf est encore un exemple.
+-->
 <template id="modal-projet2a">
   <div class="modal-inner">
     <div class="modal-badge">LANGAGE</div>
@@ -673,8 +756,11 @@
   </div>
 </template>
 
-<!-- Les scripts attendent que le HTML soit prêt grâce à defer, puis sont exécutés dans cet ordre.
-     Chaque fichier s’occupe d’une fonctionnalité pour faciliter les modifications. -->
+<!--
+  Chaque fichier JS s’occupe d’une partie du site : chargement, décor, navigation, projets, contact, avatar et terminal.
+  L’attribut defer laisse le navigateur lire le HTML avant de lancer ces fichiers, pour que les éléments recherchés existent déjà.
+  Si on ajoute un fichier dans js/, il faut aussi ajouter sa balise script ici pour qu’il soit exécuté.
+-->
 <script src="js/chargement.js" defer></script>
 <script src="js/decor.js" defer></script>
 <script src="js/navigation.js" defer></script>
