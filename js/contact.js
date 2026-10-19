@@ -51,7 +51,7 @@
         // On vide les champs seulement après un envoi réussi.
         // En cas d’erreur, le texte reste en place pour permettre de réessayer.
         form.reset();
-        showGuideMsg("Message envoyé ! Je reviens vers toi très vite.");
+
       // Une panne réseau ou une réponse refusée arrive ici.
       // Le visiteur reçoit un retour visible et peut garder son message pour un nouvel essai.
       } catch (err) {
@@ -61,7 +61,7 @@
             : err.message;
         toast.classList.add("error");
         toast.classList.remove("hidden");
-        showGuideMsg("Oups, le message n'est pas parti. Réessaie !");
+
       // Ce bloc tourne dans les deux cas : réussite ou erreur.
       // Il réactive le bouton et masque le message de retour après quatre secondes.
       } finally {

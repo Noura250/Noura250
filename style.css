@@ -85,52 +85,6 @@ body {
 }
 #cityCanvas { width: 100%; height: 100%; }
 
-/* Personnage du guide.
-   Le guide reste dans un coin de la fenêtre pendant la visite.
-   Sa bulle peut être masquée sans retirer le personnage, grâce à la classe hidden. */
-.guide-char {
-  position: fixed;
-  bottom: 30px;
-  right: 24px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  animation: guide-float 3s ease-in-out infinite;
-  cursor: pointer;
-}
-@keyframes guide-float {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-.guide-bubble {
-  background: var(--bg2);
-  border: 2px solid var(--cyan);
-  padding: 10px 14px;
-  font-family: var(--font-vt);
-  font-size: 16px;
-  color: var(--white);
-  max-width: 240px;
-  position: relative;
-  image-rendering: pixelated;
-  box-shadow: 3px 3px 0 var(--purple);
-  transition: opacity 0.3s;
-}
-.guide-bubble.hidden { opacity: 0; pointer-events: none; }
-.bubble-tail {
-  position: absolute;
-  bottom: -10px; right: 16px;
-  width: 0; height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid var(--cyan);
-}
-#characterCanvas {
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-}
-
 /* Écran de chargement.
    Le chargement recouvre la page au démarrage.
    La classe boot-done déclenche sa disparition avant que le JavaScript ne retire le bloc. */
@@ -1144,8 +1098,6 @@ body {
   }
   .nav-links.open { max-height: 400px; }
   .nav-link { padding: 14px 20px; border-bottom: 1px solid var(--gray); font-size: 11px; }
-  .guide-char { bottom: 16px; right: 12px; }
-  .guide-bubble { max-width: 180px; font-size: 13px; }
 }
 
 @media (max-width: 500px) {

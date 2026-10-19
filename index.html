@@ -50,8 +50,7 @@
 
 
 <!-- Menu.
-     Chaque href qui commence par # rejoint la section portant cet id.
-     Le texte data-msg est repris par le guide au survol du lien. -->
+     Chaque href qui commence par # rejoint la section portant cet id. -->
 <nav class="pixel-nav">
   <div class="nav-logo">
     <span class="blink">▶</span> NOURA.EXE
@@ -60,12 +59,12 @@
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="#moi" class="nav-link" data-msg="Qui suis-je ? Découvre mon histoire !">[ MOI ]</a>
-    <a href="#parcours" class="nav-link" data-msg="Mon parcours académique niveau par niveau !">[ PARCOURS ]</a>
-    <a href="#projets" class="nav-link" data-msg="Mes créations... prêt(e) à explorer ?">[ PROJETS ]</a>
-    <a href="#stages" class="nav-link" data-msg="Mon expérience terrain en vrai monde !">[ STAGE ]</a>
-    <a href="#veilles" class="nav-link" data-msg="Je reste toujours à jour sur la tech !">[ VEILLES ]</a>
-    <a href="#contact" class="nav-link" data-msg="Envie de me contacter ? Je réponds vite !">[ CONTACT ]</a>
+    <a href="#moi" class="nav-link">[ MOI ]</a>
+    <a href="#parcours" class="nav-link">[ PARCOURS ]</a>
+    <a href="#projets" class="nav-link">[ PROJETS ]</a>
+    <a href="#stages" class="nav-link">[ STAGE ]</a>
+    <a href="#veilles" class="nav-link">[ VEILLES ]</a>
+    <a href="#contact" class="nav-link">[ CONTACT ]</a>
   </div>
 </nav>
 
@@ -664,11 +663,9 @@
 </template>
 
 <!-- Les scripts attendent que le HTML soit prêt grâce à defer, puis sont exécutés dans cet ordre.
-     Garde guide.js avant navigation.js, projets.js et contact.js : ils utilisent ses messages.
      Chaque fichier s’occupe d’une fonctionnalité pour faciliter les modifications. -->
 <script src="js/chargement.js" defer></script>
 <script src="js/decor.js" defer></script>
-<script src="js/guide.js" defer></script>
 <script src="js/navigation.js" defer></script>
 <script src="js/projets.js" defer></script>
 <script src="js/contact.js" defer></script>

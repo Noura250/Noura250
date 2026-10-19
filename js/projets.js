@@ -43,17 +43,6 @@
     document.body.style.overflow = "hidden";
     document.querySelector(".modal-close").focus();
 
-    // Ces messages sont facultatifs. Pour en ajouter un, utilise la même clé que celle de la carte.
-    const msgs = {
-      bataille: "Bataille Navale en PHP, mon tout premier projet !",
-      gite: "Modélisation BDD — j'adore le SQL !",
-      bubbly: "Bubbly, une app de chat que j'ai codée avec mon groupe !",
-      hotel: "Hôtel Neptune, un site PHP complet.",
-      python: "Système de réservation en Python orienté objet",
-      stage2025: "Mon premier stage ! Une vraie expérience",
-      stage2026: "Mon stage de deuxième année.",
-    };
-    if (msgs[key]) showGuideMsg(msgs[key]);
   };
 
   window.closeModal = function (event) {

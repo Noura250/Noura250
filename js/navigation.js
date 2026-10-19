@@ -10,7 +10,7 @@
   const navLinks = document.querySelectorAll(".nav-link");
 
   // Le navigateur nous prévient quand une section devient visible.
-  // À partir de 40 % de visibilité, on marque son lien dans le menu et on adapte le message du guide.
+  // À partir de 40 % de visibilité, on marque son lien dans le menu.
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -19,7 +19,7 @@
           navLinks.forEach((l) => {
             l.classList.toggle("active", l.getAttribute("href") === "#" + id);
           });
-          if (guideMessages[id]) showGuideMsg(guideMessages[id]);
+
         }
       });
     },
