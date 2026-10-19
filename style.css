@@ -1110,3 +1110,7 @@ body {
   margin: 24px 0 12px;
 }
 .modal-tech { color: var(--purple-l); }
+
+/* Le lien du compte rendu reste séparé du résumé et s’adapte aux petits écrans. */
+.veille-card p + p { margin-top: 12px; }
+.veille-document { margin-top: 20px; white-space: normal; line-height: 1.8; }
